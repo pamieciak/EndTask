@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="logIn">
+    <div class="logIn__box">
+      <h1>Zaloguj się</h1>
+      <form [formGroup]="loginForm" class="logIn__form">
+        <mat-form-field *ngIf="!isSigneedIn">
+          <input
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="email?.errors?.['required']">Email jest wymagany</mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">Zły format</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="!isSigneedIn">
+          <mat-label>Enter your password</mat-label>
+          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword()"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="password?.errors?.['required']">Hasło jest wymagane</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="onSignin(email?.value, password?.value)" class="submitBtn">Zaloguj</button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-dashboard *ngIf="isSigneedIn"></app-dashboard>
