@@ -15,13 +15,5 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
-  @Output() isLogout = new EventEmitter<void>();
 
-  constructor(private userService: UserService, private router: Router) {}
-
-  logout() {
-    this.userService.logOut();
-    this.isLogout.emit();
-    this.router.navigate(['log-in']);
-  }
 }

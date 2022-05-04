@@ -19,8 +19,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './dashboard/header/header.component';
 
 const routes: Routes = [
   {
@@ -34,12 +41,12 @@ const routes: Routes = [
   },
   {
     path:'dashboard',
-    component:DashboardComponent
+    component:DashboardComponent,
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent, LogInComponent, DashboardComponent],
+  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent],
   imports: [
     BrowserModule,
     CommonModule,
@@ -55,7 +62,11 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-  
+    MatMenuModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatDividerModule
+
   ],
   exports: [RouterModule],
   providers: [],
