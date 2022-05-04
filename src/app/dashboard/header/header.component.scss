@@ -1,0 +1,36 @@
+header {
+  background-color: #673ab7;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+  span {
+    font-size: 2.5rem;
+  }
+}
+
+mat-icon{
+  font-size: 2.5rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.slideMenu {
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  right: -200px;
+  width: 200px;
+  height: 100vh;
+  background-color: #fff;
+  transition: transform 0.3s;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+}
+.slideMenu.active {
+  transform: translateX(-200px);
+}
+
+.logout{
+  display: inline-block;
+  font-size: 1.1rem;
+  margin-left: 1.5rem;
+}

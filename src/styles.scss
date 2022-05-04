@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
+
 
 *,
 *::after,
@@ -14,6 +17,8 @@ html{
 
 body{
   background-image: url("./app/shared/images/ice-cream-5928043_1920.jpg");
+  font-family: Lato, sans-serif;
+  overflow: hidden;
 }
 
 .container{

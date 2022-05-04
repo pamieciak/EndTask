@@ -1,0 +1,26 @@
+<header class="header">
+  <mat-toolbar color="primary" class="container">
+    <mat-toolbar-row>
+      <span class="header__logo">iceBook</span>
+      <span class="spacer"></span>
+      <button
+        mat-icon-button
+        class="header__menuBtn"
+        (click)="togglenav()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
+
+<div class="slideMenu" [ngClass]="toggleNav ? 'active' : ''">
+  <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon>
+    <span class="logout">Log out</span>
+  </button>
+
+</div>
+
