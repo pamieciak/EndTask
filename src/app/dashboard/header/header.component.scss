@@ -15,6 +15,8 @@ mat-icon{
 }
 
 .slideMenu {
+  display: flex;
+  justify-content: flex-start;
   position: absolute;
   right: -200px;
   width: 200px;
@@ -25,4 +27,10 @@ mat-icon{
 }
 .slideMenu.active {
   transform: translateX(-200px);
+}
+
+.logout{
+  display: inline-block;
+  font-size: 1.1rem;
+  margin-left: 1.5rem;
 }

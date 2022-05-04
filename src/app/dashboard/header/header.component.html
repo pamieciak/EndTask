@@ -18,6 +18,9 @@
 </header>
 
 <div class="slideMenu" [ngClass]="toggleNav ? 'active' : ''">
-  <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon> Log out</button>
+  <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon>
+    <span class="logout">Log out</span>
+  </button>
+
 </div>
 
