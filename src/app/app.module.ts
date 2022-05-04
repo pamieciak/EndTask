@@ -28,6 +28,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/header/header.component';
+import { StoreModule } from '@ngrx/store';
 
 const routes: Routes = [
   {
@@ -52,6 +53,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
+    StoreModule.forRoot({},{}),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
