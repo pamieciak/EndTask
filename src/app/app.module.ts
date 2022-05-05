@@ -32,6 +32,7 @@ import { StoreModule } from '@ngrx/store';
 import { AdduserComponent } from './dashboard/adduser/adduser.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserListComponent } from './dashboard/user-list/user-list.component';
 
 const routes: Routes = [
   {
@@ -54,7 +55,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent],
+  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent, UserListComponent],
   imports: [
     BrowserModule,
     CommonModule,

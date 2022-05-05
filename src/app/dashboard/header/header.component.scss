@@ -24,6 +24,8 @@ mat-icon{
   background-color: #fff;
   transition: transform 0.3s;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+
 }
 .slideMenu.active {
   transform: translateX(-200px);
