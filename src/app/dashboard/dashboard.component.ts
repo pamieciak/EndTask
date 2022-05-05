@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../shared/services/api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,5 +17,11 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
+
+
+  constructor(private apiService: ApiService){}
+
+  public users$ = this.apiService.GetUser()
+
 
 }

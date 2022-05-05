@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { Userinterface } from '../userinterface';
-
+import { ApiService } from './api.service';
+import { apiInterface } from './apiinterface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,32 +14,41 @@ export class UserService {
 
   constructor(
     public firebaseAuth: AngularFireAuth,
-    public fireStore: AngularFirestore
+    public fireStore: AngularFirestore,
+    public apiService: ApiService,
+    public router: Router
   ) {}
 
   isLoggedIn = false;
 
-  async signin(email: string, password: string) {
-    await this.firebaseAuth
-      .signInWithEmailAndPassword(email, password)
-      .then((res) => {
-        if (res.user?.email) {
-          const userData: Userinterface = {
-            uid: res.user.uid,
-            email: res.user.email,
-            displayName: res.user.displayName,
-          };
-          this.isLoggedIn=true;
-          localStorage.setItem('user', JSON.stringify(res.user));
-          this.user = res.user.displayName;
-
+   signin(email: string, password: string) {
+     this.firebaseAuth
+    .signInWithEmailAndPassword(email, password)
+    .then((res) => {
+      if (res.user?.email) {
+        const userData: apiInterface = {
+          uid: res.user.uid,
+          email: res.user.email,
+          displayName: res.user.displayName,
+        };
+        this.isLoggedIn = true;
+        localStorage.setItem('user', JSON.stringify(res.user));
+        this.user = res.user.displayName;
+        console.log(this.user);
+        this.router.navigate(['dashboard'])
         }
-        });
+      });
   }
-  async signup(email: string, password: string) {
-    await this.firebaseAuth
+
+  signup(name: string, email: string, password: string) {
+    this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
+        this.apiService.SetUserData(res.user!.uid, {
+          name: name,
+          email: email,
+          displayName: 'customer',
+        });
         res.user?.updateProfile({
           displayName: 'customer',
         });

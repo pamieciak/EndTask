@@ -1,6 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -12,10 +16,45 @@ import { UserService } from 'src/app/shared/services/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdduserComponent {
-  constructor(public userService: UserService, public fireStore: AngularFirestore) {}
+  add = false;
 
-  async onSignup(email: string, password: string) {
-    await this.userService.signup(email, password)
-    };
+  SignUpForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
+
+  hide = true;
+
+  constructor(
+    public userService: UserService,
+    public fireStore: AngularFirestore,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  onSignup(name: string, email: string, password: string) {
+    this.userService.signup(name, email, password);
+    setTimeout(() => {
+      this.add = !this.add;
+      this.cdr.detectChanges();
+    },1000);
   }
 
+  addUser() {
+    this.add = !this.add;
+  }
+
+  hidePassword() {
+    this.hide = !this.hide;
+  }
+
+  get name() {
+    return this.SignUpForm.get('name');
+  }
+  get email() {
+    return this.SignUpForm.get('email');
+  }
+  get password() {
+    return this.SignUpForm.get('password');
+  }
+}

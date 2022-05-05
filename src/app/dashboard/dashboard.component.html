@@ -1,4 +1,11 @@
 <app-header></app-header>
-<p>dashboard works!</p>
 
+
+<div class="addUser">
 <app-adduser></app-adduser>
+</div>
+
+
+<div *ngFor="let res of users$ | async">
+  {{res.name | json}}
+</div>

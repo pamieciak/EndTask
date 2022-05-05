@@ -1,0 +1,62 @@
+.signupbox {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 20rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    mat-form-field {
+      margin: 0.3rem;
+      width: 18rem;
+    }
+  }
+}
+
+.submitBtn {
+  font-size: 1.3rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem 0rem 0rem 0rem;
+}
+
+@media (min-width: 768px) {
+  .logIn {
+    &__box {
+      width: 25rem;
+      height: 20rem;
+    }
+    &__form {
+      mat-form-field {
+        width: 22rem;
+      }
+    }
+  }
+}
+
+.btn {
+  padding: 1rem;
+  font-size: 1.3rem;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.addUser {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+}

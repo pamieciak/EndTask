@@ -1,6 +1,70 @@
-<div>
+<!-- <div>
   <h2>Sign in</h2>
   <input type="text" #email />
   <input type="text" #password />
   <button (click)="onSignup(email.value, password.value)">Sign in</button>
+</div> -->
+<div class="addUser">
+  <button mat-raised-button color="primary" class="btn" (click)="addUser()">
+    <mat-icon>add_circle_outline</mat-icon> Dodaj klienta!
+  </button>
+
+  <div *ngIf="add">
+    <div class="signupbox">
+      <form [formGroup]="SignUpForm" class="signupbox__form">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="podaj imię klienta"
+            formControlName="name"
+            required
+          />
+          <mat-error *ngIf="name?.errors?.['required']"
+            >Imie jest wymagany</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="podaj adres email"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="email?.errors?.['required']"
+            >Email jest wymagany</mat-error
+          >
+          <mat-error *ngIf="email?.errors?.['email']">Zły format</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Podaj hasło</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword()"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="password?.errors?.['required']"
+            >Hasło jest wymagane</mat-error
+          >
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="SignUpForm.invalid"
+          (click)="onSignup(name?.value, email?.value, password?.value)"
+          class="submitBtn"
+        >
+          Dodaj
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
