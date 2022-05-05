@@ -29,6 +29,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { StoreModule } from '@ngrx/store';
+import { AdduserComponent } from './dashboard/adduser/adduser.component';
+import { AuthGuard } from './shared/guard/auth.guard';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   {
@@ -42,12 +45,16 @@ const routes: Routes = [
   },
   {
     path:'dashboard',
-    component:DashboardComponent,
+    component:DashboardComponent, canActivate: [AuthGuard]
+  },
+  {
+    path:'userdashboard',
+    component: UserDashboardComponent
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent],
+  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent],
   imports: [
     BrowserModule,
     CommonModule,

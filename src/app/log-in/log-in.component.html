@@ -6,7 +6,7 @@
         <mat-form-field *ngIf="!isSigneedIn">
           <input
             matInput
-            placeholder="pat@example.com"
+            placeholder="podaj adres email"
             formControlName="email"
             required
           />
@@ -14,7 +14,7 @@
           <mat-error *ngIf="email?.errors?.['email']">Zły format</mat-error>
         </mat-form-field>
         <mat-form-field *ngIf="!isSigneedIn">
-          <mat-label>Enter your password</mat-label>
+          <mat-label>Podaj hasło</mat-label>
           <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
           <button
             mat-icon-button

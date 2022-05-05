@@ -1,4 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -6,11 +12,11 @@ import { UserService } from 'src/app/shared/services/user.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent  {
-  showFiller = false;
- toggleNav = false
+export class HeaderComponent {
+  // showFiller = false;
+  toggleNav = false;
 
   @Output() isLogout = new EventEmitter<void>();
 
@@ -21,8 +27,8 @@ export class HeaderComponent  {
     this.isLogout.emit();
     this.router.navigate(['log-in']);
   }
-  togglenav(){
-    this.toggleNav = !this.toggleNav
+  togglenav() {
+    this.toggleNav = !this.toggleNav;
     console.log(this.toggleNav);
   }
 }
