@@ -19,9 +19,5 @@ import { ApiService } from '../shared/services/api.service';
 export class DashboardComponent {
 
 
-  constructor(private apiService: ApiService){}
-
-  public users$ = this.apiService.GetUser()
-
 
 }
