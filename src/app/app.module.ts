@@ -33,6 +33,7 @@ import { AdduserComponent } from './dashboard/adduser/adduser.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './dashboard/user-list/user-list.component';
+import { AddproductComponent } from './dashboard/addproduct/addproduct.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,20 @@ const routes: Routes = [
   },
   {
     path:'dashboard',
-    component:DashboardComponent, canActivate: [AuthGuard]
+    component:DashboardComponent, canActivate: [AuthGuard], children: [
+      {
+        path:'add-flav',
+        component: AddproductComponent
+      },
+      {
+        path:'add-user',
+        component:AdduserComponent
+      },
+      {
+        path: 'user-list',
+        component: UserListComponent
+      }
+    ]
   },
   {
     path:'userdashboard',
@@ -55,7 +69,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent, UserListComponent],
+  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent, UserListComponent, AddproductComponent],
   imports: [
     BrowserModule,
     CommonModule,

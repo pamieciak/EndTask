@@ -1,0 +1,49 @@
+.addFlavBtn {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  width: 50px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 3rem;
+  transition: all 0.3s;
+}
+.addFlavBtn:hover {
+  transform: scale(1.1);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 30vh;
+  background-color: #fff;
+  box-shadow: 0px 10px 20px black;
+  border-radius: 8px;
+
+  p {
+    font-size: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    mat-form-field {
+      margin: 0.3rem;
+      width: 18rem;
+    }
+  }
+}

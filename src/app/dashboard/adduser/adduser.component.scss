@@ -1,14 +1,29 @@
+.addUser {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+}
 .signupbox {
-  margin: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 20rem;
-  height: 20rem;
+  height: 25rem;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+
+  p {
+    font-size: 2rem;
+  }
 
   &__form {
     display: flex;
@@ -20,6 +35,32 @@
       width: 18rem;
     }
   }
+}
+
+.addUserBtn {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  width: 50px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 3rem;
+  transition: all 0.3s;
+
+  mat-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.8);
+  }
+}
+
+.addUserBtn:hover {
+  transform: scale(1.1);
 }
 
 .submitBtn {
@@ -40,23 +81,4 @@
       }
     }
   }
-}
-
-.btn {
-  padding: 1rem;
-  font-size: 1.3rem;
-  transition: all 0.3s;
-}
-
-.btn:hover {
-  transform: scale(1.1);
-}
-
-.addUser {
-  margin: 1rem auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 300px;
 }

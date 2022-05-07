@@ -1,24 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Userinterface } from '../userinterface';
-import { AngularFirestore,AngularFirestoreDocument, } from '@angular/fire/compat/firestore';
-import { AngularFireDatabase, } from '@angular/fire/compat/database';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/compat/firestore';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 import { UserInfo } from 'os';
 import { BehaviorSubject } from 'rxjs';
+// import { flavourInterface } from './flavourinterface';
+import { productinterface } from './productinterface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
   // public users = new BehaviorSubject<Userinterface[]>([]);
 
-  constructor(private db: AngularFireDatabase ) { }
+  constructor(private db: AngularFireDatabase) {}
 
-GetUser(){
-  return this.db.list<Userinterface>('/users/').valueChanges()
+  addProduct(name: string) {
+    return this.db
+      .list<productinterface>('/products/flavours')
+      .push({ name: name });
+  }
 
-}
+  GetUser() {
+    return this.db.list<Userinterface>('/users/').valueChanges();
+  }
+  // GetFlavours() {
+  //   return this.db.list<flavourInterface>('/iceCream/flavours').valueChanges();
+  // }
 
   SetUserData(uid: string, user: Userinterface) {
     this.db.object('users/' + uid).set(user);

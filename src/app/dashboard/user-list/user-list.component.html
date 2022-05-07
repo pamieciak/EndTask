@@ -1,6 +1,12 @@
 <div class="container">
-  <button mat-raised-button color="primary" class="btn" (click)="showUser()">
-    <mat-icon>add_circle_outline</mat-icon> Pokaż klientów
+  <button
+    mat-raised-button
+    color="primary"
+    class="showUserBtn"
+    (click)="showUser()"
+    [routerLink]="['user-list']"
+  >
+    <mat-icon class="users">supervised_user_circle</mat-icon>
   </button>
   <ng-container *ngIf="show">
     <div class="modal">
