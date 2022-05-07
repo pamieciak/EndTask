@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ElementRef, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -8,14 +9,24 @@ import { ApiService } from 'src/app/shared/services/api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserListComponent {
-
   show = false;
 
-  constructor(private apiService: ApiService) {}
+  @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
+    if (!this.show || this.el.nativeElement.contains(e.target)) return;
+    this.show = false;
+    this.router.navigate(['dashboard'])
+  }
+
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private el: ElementRef
+  ) {}
 
   public users$ = this.apiService.GetUser();
 
-  showUser(){
-    this.show = !this.show
+  showUser() {
+    this.show = !this.show;
+    if (this.show === false) this.router.navigate(['dashboard']);
   }
 }

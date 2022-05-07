@@ -4,9 +4,12 @@ import {
   ChangeDetectionStrategy,
   Input,
   ChangeDetectorRef,
+  HostListener,
+  ElementRef,
 } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -17,6 +20,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class AdduserComponent {
   add = false;
+  hide = true;
 
   SignUpForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -24,24 +28,36 @@ export class AdduserComponent {
     password: new FormControl('', [Validators.required]),
   });
 
-  hide = true;
+  @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
+    if (!this.add || this.el.nativeElement.contains(e.target)) return;
+    this.add = false;
+    if ((e.target as HTMLElement).classList.contains('users')) {
+      this.router.navigate(['dashboard/user-list']);
+    } else {
+      this.router.navigate(['dashboard']);
+    }
+  }
 
   constructor(
     public userService: UserService,
     public fireStore: AngularFirestore,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+    private el: ElementRef
   ) {}
 
   onSignup(name: string, email: string, password: string) {
     this.userService.signup(name, email, password);
     setTimeout(() => {
       this.add = !this.add;
+      this.router.navigate(['dashboard']);
       this.cdr.detectChanges();
-    },1000);
+    }, 1000);
   }
 
   addUser() {
     this.add = !this.add;
+    if (this.add === false) this.router.navigate(['dashboard']);
   }
 
   hidePassword() {

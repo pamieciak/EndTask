@@ -1,0 +1,35 @@
+<button
+  mat-raised-button
+  color="primary"
+  class="addFlavBtn"
+  (click)="openFlav()"
+  [routerLink]="['add-flav']"
+>
+  +
+</button>
+
+<div *ngIf="open" class="modal">
+  <p>Dodaj smak</p>
+  <form>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="wpisz nazwę smaku"
+        [formControl]="name"
+        required
+      />
+      <mat-error *ngIf="name?.errors?.['required']"
+        >Smak jest wymagany</mat-error
+      >
+    </mat-form-field>
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="name.invalid"
+      (click)="addflavour()"
+    >
+      dodaj smak
+    </button>
+  </form>
+</div>
