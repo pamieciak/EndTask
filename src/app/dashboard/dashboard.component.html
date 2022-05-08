@@ -7,6 +7,15 @@
 <app-user-list></app-user-list>
 <app-addproduct></app-addproduct>
 
-<!-- <div *ngFor="let res of users$ | async">
-  {{ res | json }}
-</div> -->
+<!-- <button (click)="getData()">pobierz</button> -->
+
+<div class="mainList">
+  <h2>Smaki</h2>
+  <div *ngFor="let flav of flav$ | async">
+    <p>{{ flav.name}}</p>
+  </div>
+  <h2>Dostępne pojemności</h2>
+  <div *ngFor="let amout of amount$ | async">
+    {{ amout.value}}
+  </div>
+</div>

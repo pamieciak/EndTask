@@ -4,6 +4,8 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
+  HostListener,
+  ElementRef,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -19,8 +21,12 @@ export class HeaderComponent {
   toggleNav = false;
 
   @Output() isLogout = new EventEmitter<void>();
+  @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
+    if (!this.toggleNav || this.el.nativeElement.contains(e.target)) return;
+    this.toggleNav = false;
+  }
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private el: ElementRef) {}
 
   logout() {
     this.userService.logOut();
@@ -29,6 +35,5 @@ export class HeaderComponent {
   }
   togglenav() {
     this.toggleNav = !this.toggleNav;
-    console.log(this.toggleNav);
   }
 }

@@ -1,22 +1,41 @@
-.addFlavBtn {
+// POPRAWIĆ TO! DRY
+
+.addFlavBtn, .addAmBtn {
   position: absolute;
   bottom: 1rem;
   left: 2rem;
   width: 50px;
   height: 60px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   font-size: 3rem;
   transition: all 0.3s;
+
+  span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
-.addFlavBtn:hover {
+
+.addAmBtn{
+  bottom: 6rem;
+  left: 2rem;
+
+  mat-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+  }
+}
+.addFlavBtn:hover, .addAmBtn:hover {
   transform: scale(1.1);
 }
 
-.modal {
+.modal, .amountmodal {
   position: absolute;
   top: 50%;
   left: 50%;
