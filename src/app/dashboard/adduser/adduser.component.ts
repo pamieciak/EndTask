@@ -31,11 +31,12 @@ export class AdduserComponent {
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
     if (!this.add || this.el.nativeElement.contains(e.target)) return;
     this.add = false;
+    console.log(e.target);
     if ((e.target as HTMLElement).classList.contains('users')) {
       this.router.navigate(['dashboard/user-list']);
-    } else {
-      this.router.navigate(['dashboard']);
-    }
+    } else if ((e.target as HTMLElement).classList.contains('addFlav')) {
+      this.router.navigate(['dashboard/add-flav']);
+    } else this.router.navigate(['dashboard']);
   }
 
   constructor(

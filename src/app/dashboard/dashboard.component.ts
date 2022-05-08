@@ -1,14 +1,6 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import { UserService } from '../shared/services/user.service';
-import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ApiService } from '../shared/services/api.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,10 +10,18 @@ import { ApiService } from '../shared/services/api.service';
 })
 export class DashboardComponent {
 
+  
+    public flav$ = this.apiService.GetFlavours();
+    public amount$ = this.apiService.GetAmount();
+   
 
-  // constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {}
 
-  // public users$ = this.apiService.GetFlavours();
+  // getData(){
+  //   return forkJoin([this.flav$, this.amount$]).subscribe((res) => {
+  //     console.log(res);
+  //   })
+  // }
 
-
+  
 }
