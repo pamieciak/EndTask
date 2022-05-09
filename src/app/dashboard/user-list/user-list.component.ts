@@ -16,6 +16,8 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class UserListComponent {
   show = false;
+  showOrd = false;
+
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
     if (!this.show || this.el.nativeElement.contains(e.target)) return;
@@ -36,8 +38,15 @@ export class UserListComponent {
 
   public users$ = this.apiService.GetUser();
 
+  // public usersorder$ = this.apiService.GetUserwithOrder();
+
   showUser() {
     this.show = !this.show;
     if (this.show === false) this.router.navigate(['dashboard']);
+  }
+
+  showorder() {
+    this.showOrd = !this.showOrd;
+   
   }
 }
