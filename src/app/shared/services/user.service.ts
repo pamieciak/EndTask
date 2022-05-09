@@ -1,3 +1,4 @@
+import { VariableBinding } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -5,6 +6,7 @@ import { Router } from '@angular/router';
 import { Userinterface } from '../userinterface';
 import { ApiService } from './api.service';
 import { apiInterface } from './apiinterface';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -21,21 +23,21 @@ export class UserService {
 
   isLoggedIn = false;
 
-   signin(email: string, password: string) {
-     this.firebaseAuth
-    .signInWithEmailAndPassword(email, password)
-    .then((res) => {
-      if (res.user?.email) {
-        const userData: apiInterface = {
-          uid: res.user.uid,
-          email: res.user.email,
-          displayName: res.user.displayName,
-        };
-        this.isLoggedIn = true;
-        localStorage.setItem('user', JSON.stringify(res.user));
-        this.user = res.user.displayName;
-        console.log(this.user);
-        this.router.navigate(['dashboard'])
+  signin(email: string, password: string) {
+    this.firebaseAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((res) => {
+        if (res.user?.email) {
+          const userData: apiInterface = {
+            uid: res.user.uid,
+            email: res.user.email,
+            displayName: res.user.displayName,
+          };
+          this.isLoggedIn = true;
+          localStorage.setItem('user', JSON.stringify(res.user));
+          this.user = res.user.displayName;
+          console.log(this.firebaseAuth.currentUser);
+          this.router.navigate(['dashboard']);
         }
       });
   }
@@ -48,12 +50,16 @@ export class UserService {
           name: name,
           email: email,
           displayName: 'customer',
+          orders:[]
         });
         res.user?.updateProfile({
           displayName: 'customer',
         });
       });
   }
+
+
+
 
   // Przechowywanie w bazie danych
   // SetUserData(user: any) {

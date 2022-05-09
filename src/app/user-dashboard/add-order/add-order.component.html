@@ -1,0 +1,29 @@
+<button (click)="openOrder()">Add order</button>
+
+<ng-container *ngIf="open">
+
+    <div class="orderContainer">
+        <div class="orderDetail">
+            <form [formGroup]="orderForm" (ngSubmit)="addToCart()">
+                <select formControlName="flavour">
+                    <option *ngFor="let flav of flav$ | async">
+                        {{flav.name}}
+                    </option>
+                </select>
+                <select formControlName="amount">
+                    <option *ngFor="let amout of amout$ | async">
+                        {{amout.value}}
+                    </option>
+                </select>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div class="orderList">
+            <div *ngFor="let ord of order; let i = index">
+                {{order[i] | json}}
+            </div>
+            <button (click)="sendOrder()">Send</button>
+        </div>
+    </div>
+
+</ng-container>

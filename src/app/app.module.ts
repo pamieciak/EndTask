@@ -34,6 +34,7 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './dashboard/user-list/user-list.component';
 import { AddproductComponent } from './dashboard/addproduct/addproduct.component';
+import { AddOrderComponent } from './user-dashboard/add-order/add-order.component';
 
 const routes: Routes = [
   {
@@ -69,7 +70,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent, UserListComponent, AddproductComponent],
+  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent, UserListComponent, AddproductComponent, AddOrderComponent],
   imports: [
     BrowserModule,
     CommonModule,

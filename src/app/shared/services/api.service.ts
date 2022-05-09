@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 import { productinterface, productvalue } from './productinterface';
 
 import { forkJoin } from 'rxjs';
+import { orderData } from './orderinterface';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,9 @@ export class ApiService {
   GetUser() {
     return this.db.list<Userinterface>('/users/').valueChanges();
   }
+  // GetUserwithOrder() {
+  //   return this.db.list<Userinterface>('/users').valueChanges();
+  // }
 
   GetFlavours() {
     return this.db.list<productinterface>('/products/flavours').valueChanges();
@@ -51,6 +55,10 @@ export class ApiService {
   SetUserData(uid: string, user: Userinterface) {
     this.db.object('users/' + uid).set(user);
   }
+
+  // SetOrderData(uid: any, order: orderData) {
+  //   this.db.object('users/' + uid).update(order);
+  // }
 }
 //   SetUserData(uid: string, user: any) {
 //     const userRef: AngularFirestoreDocument<any> = this.db.doc(
