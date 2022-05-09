@@ -25,6 +25,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 
 
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/header/header.component';
@@ -35,6 +36,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserListComponent } from './dashboard/user-list/user-list.component';
 import { AddproductComponent } from './dashboard/addproduct/addproduct.component';
 import { AddOrderComponent } from './user-dashboard/add-order/add-order.component';
+import { FavouritesComponent } from './user-dashboard/favourites/favourites.component';
 
 const routes: Routes = [
   {
@@ -70,7 +72,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent, UserListComponent, AddproductComponent, AddOrderComponent],
+  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent, UserListComponent, AddproductComponent, AddOrderComponent, FavouritesComponent],
   imports: [
     BrowserModule,
     CommonModule,
@@ -90,7 +92,7 @@ const routes: Routes = [
     MatMenuModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
 
   ],
   exports: [RouterModule],

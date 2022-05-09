@@ -10,10 +10,11 @@ import { forkJoin } from 'rxjs';
 })
 export class DashboardComponent {
 
-  
-    public flav$ = this.apiService.GetFlavours();
-    public amount$ = this.apiService.GetAmount();
-   
+
+  public users$ = this.apiService.GetUser();
+
+  // public getuser$ = this.apiService.GetUserwithOrder(this.data2.uid);
+
 
   constructor(private apiService: ApiService) {}
 
@@ -22,6 +23,4 @@ export class DashboardComponent {
   //     console.log(res);
   //   })
   // }
-
-  
 }

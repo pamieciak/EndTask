@@ -18,8 +18,6 @@ import { orderData } from './orderinterface';
   providedIn: 'root',
 })
 export class ApiService {
-  // public users = new BehaviorSubject<Userinterface[]>([]);
-
   constructor(private db: AngularFireDatabase) {}
 
   addFlavour(name: string) {
@@ -34,18 +32,24 @@ export class ApiService {
       .push({ value: value });
   }
 
-  GetUser() {
-    return this.db.list<Userinterface>('/users/').valueChanges();
-  }
-  // GetUserwithOrder() {
-  //   return this.db.list<Userinterface>('/users').valueChanges();
-  // }
-
   GetFlavours() {
     return this.db.list<productinterface>('/products/flavours').valueChanges();
   }
+
   GetAmount() {
     return this.db.list<productvalue>('/products/amount').valueChanges();
+  }
+
+  getOrders() {
+    return this.db.object<any>('/orders/').valueChanges();
+  }
+
+  GetUser() {
+    return this.db.list<Userinterface>('/users/').valueChanges();
+  }
+
+  GetUserwithOrder() {
+    return this.db.object<any>('/orders/').valueChanges();
   }
 
   getData() {
@@ -54,6 +58,10 @@ export class ApiService {
 
   SetUserData(uid: string, user: Userinterface) {
     this.db.object('users/' + uid).set(user);
+  }
+
+  addToFavourites(uid: string, name: string) {
+    this.db.object('users/' + uid + '/' + 'favs/').set(name);
   }
 
   // SetOrderData(uid: any, order: orderData) {

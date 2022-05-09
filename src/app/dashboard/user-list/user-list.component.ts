@@ -38,7 +38,7 @@ export class UserListComponent {
 
   public users$ = this.apiService.GetUser();
 
-  // public usersorder$ = this.apiService.GetUserwithOrder();
+  public usersorder$ = this.apiService.GetUserwithOrder();
 
   showUser() {
     this.show = !this.show;
@@ -47,6 +47,6 @@ export class UserListComponent {
 
   showorder() {
     this.showOrd = !this.showOrd;
-   
+
   }
 }

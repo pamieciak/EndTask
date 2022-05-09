@@ -7,6 +7,24 @@
 <app-user-list></app-user-list>
 <app-addproduct></app-addproduct>
 
+<div class="orderList">
+  <h2>nowe zamówienia</h2>
+  <div *ngFor="let res of users$ | async">
+    <div *ngIf="res.orders">
+  <div class="order">
+  <h4>{{res.name}}</h4>
+  <ng-container *ngFor="let ord of res.orders">
+    <p>smak: {{ord.flavour}}</p>
+    <p>ilość: {{ord.amount}}</p>
+    <p>data zamówienia: {{ord.date}}</p>
+  </ng-container>
+</div>
+
+</div>
+</div>
+
+</div>
+
 <!-- <button (click)="getData()">pobierz</button> -->
 
 <!-- <div class="mainList">
@@ -19,3 +37,4 @@
     {{ amout.value}}
   </div>
 </div> -->
+
