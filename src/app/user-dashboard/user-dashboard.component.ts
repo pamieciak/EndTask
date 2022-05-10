@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { format } from 'date-fns';
 import { ApiService } from '../shared/services/api.service';
+import { favInterface } from '../shared/services/favinterface';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,7 +11,8 @@ import { ApiService } from '../shared/services/api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserDashboardComponent {
-  showflavlist = false;
+
+
   data = localStorage.getItem('user');
   data2 = JSON.parse(this.data!);
   date = format(new Date(), 'y-MM-dd');
@@ -20,13 +22,9 @@ export class UserDashboardComponent {
     private db: AngularFireDatabase
   ) {}
 
-  result = {};
 
-  showList() {
-    this.showflavlist = !this.showflavlist;
-  }
 
-  showFlav$ = this.apiService.GetFlavours();
+
 
   // showOrder$ = this.apiService
   //   .getUserOrder(this.data2.uid)
@@ -34,9 +32,7 @@ export class UserDashboardComponent {
 
 
 
-    addtofav(name: string) {
-    this.apiService.addToFavourites(this.data2.uid, name)
-  }
+
 
   // public user$ = this.apiService
   //   .GetUserwithOrder(this.data2.uid, this.date)

@@ -1,5 +1,11 @@
 <div class="container">
-  <button mat-raised-button color="primary" class="showUserBtn" (click)="showUser()" [routerLink]="['user-list']">
+  <button
+    mat-raised-button
+    color="primary"
+    class="showUserBtn"
+    (click)="showUser()"
+    [routerLink]="['user-list']"
+  >
     <mat-icon class="users">supervised_user_circle</mat-icon>
   </button>
   <ng-container *ngIf="show">
@@ -13,7 +19,17 @@
         </thead>
         <tbody *ngFor="let res of users$ | async">
           <!-- <td *ngFor="let ord of res.orders ">{{ ord. | json }}</td> -->
-          <td>{{res.name}}</td>
+          <td>
+            {{ res.name }}
+            <!-- <button
+              mat-raised-button
+              color="primary"
+              *ngIf="res.orders"
+              (click)="openOrders()"
+            >
+              <mat-icon>shopping_basket</mat-icon>
+            </button> -->
+          </td>
           <td>{{ res.email }}</td>
           <!-- <td *ngFor="let ord of res.orders"> {{ord.flavour}} {{ord.amount}}  </td> -->
         </tbody>
@@ -22,12 +38,10 @@
   </ng-container>
 </div>
 
-
-  <!-- <div *ngFor="let ord of usersorder$ | async">
+<!-- <div *ngFor="let ord of usersorder$ | async">
 
     {{ord | json}} -->
-    <!-- <div class="showorder" *ngFor="let ord of res.orders ">{{ ord | json }}>
+<!-- <div class="showorder" *ngFor="let ord of res.orders ">{{ ord | json }}>
 
     </div> -->
-  <!-- </div> -->
-
+<!-- </div> -->

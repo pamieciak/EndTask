@@ -18,7 +18,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class AddproductComponent {
   openF = false;
   openA = false;
-  
+
   name = new FormControl('', [Validators.required]);
   value = new FormControl('', [Validators.required]);
 

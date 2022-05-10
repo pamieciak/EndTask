@@ -1,16 +1,12 @@
 <app-header></app-header>
 <app-add-order></app-add-order>
 
-<div>
+<!-- <div>
   {{ result | json }}
-</div>
+</div> -->
 
-<button (click)="showList()">pokaż listę smaków</button>
 
-<ng-container *ngIf="showflavlist">
-  <div *ngFor="let flav of showFlav$ | async">
-    <button (click)="addtofav(flav.name)">{{ flav.name | json }}</button>
-  </div>
-</ng-container>
+
+
 
 <app-favourites></app-favourites>

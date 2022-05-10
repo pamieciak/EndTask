@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -19,12 +18,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatDividerModule} from '@angular/material/divider';
-
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -37,6 +34,7 @@ import { UserListComponent } from './dashboard/user-list/user-list.component';
 import { AddproductComponent } from './dashboard/addproduct/addproduct.component';
 import { AddOrderComponent } from './user-dashboard/add-order/add-order.component';
 import { FavouritesComponent } from './user-dashboard/favourites/favourites.component';
+import { OrderlistComponent } from './dashboard/orderlist/orderlist.component';
 
 const routes: Routes = [
   {
@@ -49,36 +47,54 @@ const routes: Routes = [
     component: LogInComponent,
   },
   {
-    path:'dashboard',
-    component:DashboardComponent, canActivate: [AuthGuard], children: [
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    children: [
       {
-        path:'add-flav',
-        component: AddproductComponent
+        path: 'add-flav',
+        component: AddproductComponent,
       },
       {
-        path:'add-user',
-        component:AdduserComponent
+        path: 'add-user',
+        component: AdduserComponent,
       },
       {
         path: 'user-list',
-        component: UserListComponent
-      }
-    ]
+        component: UserListComponent,
+      },
+      {
+        path: 'order-list',
+        component: AddOrderComponent,
+      },
+    ],
   },
   {
-    path:'userdashboard',
-    component: UserDashboardComponent
-  }
+    path: 'userdashboard',
+    component: UserDashboardComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [AppComponent, LogInComponent, DashboardComponent, HeaderComponent, AdduserComponent, UserDashboardComponent, UserListComponent, AddproductComponent, AddOrderComponent, FavouritesComponent],
+  declarations: [
+    AppComponent,
+    LogInComponent,
+    DashboardComponent,
+    HeaderComponent,
+    AdduserComponent,
+    UserDashboardComponent,
+    UserListComponent,
+    AddproductComponent,
+    AddOrderComponent,
+    FavouritesComponent,
+    OrderlistComponent,
+  ],
   imports: [
     BrowserModule,
     CommonModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
-    StoreModule.forRoot({},{}),
+    StoreModule.forRoot({}, {}),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
@@ -93,7 +109,6 @@ const routes: Routes = [
     MatToolbarModule,
     MatSidenavModule,
     MatDividerModule,
-
   ],
   exports: [RouterModule],
   providers: [],

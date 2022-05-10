@@ -7,17 +7,19 @@ import {
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 import { UserInfo } from 'os';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 // import { flavourInterface } from './flavourinterface';
 import { productinterface, productvalue } from './productinterface';
 
-import { forkJoin } from 'rxjs';
 import { orderData } from './orderinterface';
+import { favInterface } from './favinterface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+
+
   constructor(private db: AngularFireDatabase) {}
 
   addFlavour(name: string) {
@@ -41,7 +43,11 @@ export class ApiService {
   }
 
   getOrders() {
-    return this.db.object<any>('/orders/').valueChanges();
+    return this.db.list<any>('/users/').valueChanges();
+  }
+
+  getOrderData(uid: string) {
+    return this.db.list<orderData>('users/' + uid + '/orders/').valueChanges();
   }
 
   GetUser() {
@@ -60,8 +66,15 @@ export class ApiService {
     this.db.object('users/' + uid).set(user);
   }
 
-  addToFavourites(uid: string, name: string) {
-    this.db.object('users/' + uid + '/' + 'favs/').set(name);
+
+
+
+  addToFavourites(uid: string, data: favInterface[]) {
+    this.db.object('users/' + uid + '/favs/').set(data);
+  }
+
+  getFavs(uid: string){
+    return this.db.object<any>('/users/' + uid + '/favs/').valueChanges();
   }
 
   // SetOrderData(uid: any, order: orderData) {

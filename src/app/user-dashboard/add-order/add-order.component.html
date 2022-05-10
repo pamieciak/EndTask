@@ -12,20 +12,27 @@
     <h2>Złóż zamówienie</h2>
     <div>
       <form [formGroup]="orderForm" (ngSubmit)="sendOrder()">
-       <label> wybierz smak </label>
+        <label> wybierz smak </label>
         <select formControlName="flavour">
           <option *ngFor="let flav of flav$ | async" [ngValue]="flav.name">
             {{ flav.name }}
           </option>
         </select>
-        <br>
+        <br />
         <label> wybierz ilość </label>
         <select formControlName="amount">
           <option *ngFor="let amout of amout$ | async" [ngValue]="amout.value">
             {{ amout.value }}
           </option>
         </select>
-        <button type="button" (click)="addToCart()" mat-raised-button color="primary">Dodaj</button>
+        <button
+          type="button"
+          (click)="addToCart()"
+          mat-raised-button
+          color="primary"
+        >
+          Dodaj
+        </button>
         <button type="submit" mat-raised-button color="primary">
           Wyślij zamówienie
         </button>
@@ -36,5 +43,11 @@
         <li>{{ order[i].flavour }} | {{ order[i].amount }}</li>
       </ul>
     </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="openMessage">
+  <div class="message">
+    <h1>wyczerpano limit zamówień na dziś</h1>
   </div>
 </ng-container>
