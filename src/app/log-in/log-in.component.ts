@@ -10,14 +10,14 @@ import { UserService } from '../shared/services/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogInComponent implements OnInit {
+  hide = true;
+  isSigneedIn = false;
+  
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
 
-  hide = true;
-
-  isSigneedIn = false;
 
   constructor(private userService: UserService, public router: Router) {}
 

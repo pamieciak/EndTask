@@ -58,7 +58,22 @@ td {
   padding: 0.5rem;
 }
 
-.showorder{
+.showorder {
   width: 100px;
   height: 100px;
+}
+
+.orders {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90vw;
+  height: 60vh;
+  background-color: red;
+  box-shadow: 0px 10px 20px black;
+  border-radius: 8px;
 }

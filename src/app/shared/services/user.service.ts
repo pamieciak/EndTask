@@ -46,20 +46,17 @@ export class UserService {
     this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        this.apiService.SetUserData(res.user!.uid, {
+        this.apiService.SetUserData(res.user!.uid,{
           name: name,
           email: email,
-          displayName: 'customer',
-          orders:[]
+          displayName: "customer",
+          orders: [],
         });
         res.user?.updateProfile({
           displayName: 'customer',
         });
       });
   }
-
-
-
 
   // Przechowywanie w bazie danych
   // SetUserData(user: any) {

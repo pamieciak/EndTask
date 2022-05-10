@@ -1,4 +1,9 @@
-<button mat-raised-button color="primary" class="addAmBtn" (click)="openAmount()">
+<button
+  mat-raised-button
+  color="primary"
+  class="addAmBtn"
+  (click)="openAmount()"
+>
   <mat-icon class="addAmount">fitness_center</mat-icon>
 </button>
 
@@ -6,10 +11,23 @@
   <p>Dodaj jednostkę</p>
   <form>
     <mat-form-field>
-      <input matInput placeholder="wpisz dowolną jednostkę" [formControl]="value" required />
-      <mat-error *ngIf="value?.errors?.['required']">Jednostka jest wymagana</mat-error>
+      <input
+        matInput
+        placeholder="wpisz dowolną jednostkę"
+        [formControl]="value"
+        required
+      />
+      <mat-error *ngIf="value?.errors?.['required']"
+        >Jednostka jest wymagana</mat-error
+      >
     </mat-form-field>
-    <button type="button" mat-raised-button color="primary" [disabled]="value.invalid" (click)="addAmount()">
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="value.invalid"
+      (click)="addAmount()"
+    >
       dodaj jednostkę
     </button>
   </form>
@@ -17,7 +35,13 @@
 
 <!-- ------------------------------------------------------------------- -->
 
-<button mat-raised-button color="primary" class="addFlavBtn" (click)="openFlav()" [routerLink]="['add-flav']">
+<button
+  mat-raised-button
+  color="primary"
+  class="addFlavBtn"
+  (click)="openFlav()"
+  [routerLink]="['add-flav']"
+>
   <span class="addFlav">+</span>
 </button>
 
@@ -25,10 +49,23 @@
   <p>Dodaj smak</p>
   <form>
     <mat-form-field>
-      <input matInput placeholder="wpisz nazwę smaku" [formControl]="name" required />
-      <mat-error *ngIf="name?.errors?.['required']">Smak jest wymagany</mat-error>
+      <input
+        matInput
+        placeholder="wpisz nazwę smaku"
+        [formControl]="name"
+        required
+      />
+      <mat-error *ngIf="name?.errors?.['required']"
+        >Smak jest wymagany</mat-error
+      >
     </mat-form-field>
-    <button type="button" mat-raised-button color="primary" [disabled]="name.invalid" (click)="addflavour()">
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="name.invalid"
+      (click)="addflavour()"
+    >
       dodaj smak
     </button>
   </form>

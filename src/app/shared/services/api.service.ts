@@ -7,18 +7,18 @@ import {
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 import { UserInfo } from 'os';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 // import { flavourInterface } from './flavourinterface';
 import { productinterface, productvalue } from './productinterface';
 
-import { forkJoin } from 'rxjs';
 import { orderData } from './orderinterface';
+import { favInterface } from './favinterface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  // public users = new BehaviorSubject<Userinterface[]>([]);
+
 
   constructor(private db: AngularFireDatabase) {}
 
@@ -34,18 +34,28 @@ export class ApiService {
       .push({ value: value });
   }
 
-  GetUser() {
-    return this.db.list<Userinterface>('/users/').valueChanges();
-  }
-  // GetUserwithOrder() {
-  //   return this.db.list<Userinterface>('/users').valueChanges();
-  // }
-
   GetFlavours() {
     return this.db.list<productinterface>('/products/flavours').valueChanges();
   }
+
   GetAmount() {
     return this.db.list<productvalue>('/products/amount').valueChanges();
+  }
+
+  getOrders() {
+    return this.db.list<any>('/users/').valueChanges();
+  }
+
+  getOrderData(uid: string) {
+    return this.db.list<orderData>('users/' + uid + '/orders/').valueChanges();
+  }
+
+  GetUser() {
+    return this.db.list<Userinterface>('/users/').valueChanges();
+  }
+
+  GetUserwithOrder() {
+    return this.db.object<any>('/orders/').valueChanges();
   }
 
   getData() {
@@ -54,6 +64,17 @@ export class ApiService {
 
   SetUserData(uid: string, user: Userinterface) {
     this.db.object('users/' + uid).set(user);
+  }
+
+
+
+
+  addToFavourites(uid: string, data: favInterface[]) {
+    this.db.object('users/' + uid + '/favs/').set(data);
+  }
+
+  getFavs(uid: string){
+    return this.db.object<any>('/users/' + uid + '/favs/').valueChanges();
   }
 
   // SetOrderData(uid: any, order: orderData) {

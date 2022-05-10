@@ -17,6 +17,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class UserListComponent {
   show = false;
   showOrd = false;
+  openOrd = false;
 
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
@@ -38,7 +39,8 @@ export class UserListComponent {
 
   public users$ = this.apiService.GetUser();
 
-  // public usersorder$ = this.apiService.GetUserwithOrder();
+  public usersorder$ = this.apiService
+    .GetUserwithOrder().subscribe((res) => console.log(res));
 
   showUser() {
     this.show = !this.show;
@@ -47,6 +49,9 @@ export class UserListComponent {
 
   showorder() {
     this.showOrd = !this.showOrd;
-   
+  }
+
+  openOrders(){
+    this.openOrd =!this.openOrd
   }
 }

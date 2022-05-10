@@ -1,0 +1,84 @@
+.addOrderBtn {
+  position: absolute;
+  top: 5rem;
+  left: 1rem;
+  width: 50px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 3rem;
+  transition: all 0.3s;
+}
+
+.addOrderBtn:hover {
+  transform: scale(1.1);
+}
+
+.orderContainer {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 20rem;
+  height: 27rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+}
+form {
+  height: 20%;
+  width: 100%;
+
+  select {
+    margin: 0.2rem;
+
+    border: 1px solid #673ab7;
+    border-radius: 8px;
+  }
+
+  button {
+    display: block;
+    margin: 0.5rem auto;
+  }
+}
+
+.orderList {
+  margin-top: -0.5rem;
+  padding: 1rem;
+  width: 90%;
+  height: 200px;
+  border: 1px solid #673ab7;
+  border-radius: 8px;
+
+  ul {
+    li {
+      list-style-position: inside;
+    }
+  }
+}
+
+.message{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 20rem;
+  height: 10rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+
+
+}

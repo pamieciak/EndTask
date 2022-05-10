@@ -9,19 +9,7 @@ import { forkJoin } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
-
-  
-    public flav$ = this.apiService.GetFlavours();
-    public amount$ = this.apiService.GetAmount();
-   
+  public users$ = this.apiService.GetUser();
 
   constructor(private apiService: ApiService) {}
-
-  // getData(){
-  //   return forkJoin([this.flav$, this.amount$]).subscribe((res) => {
-  //     console.log(res);
-  //   })
-  // }
-
-  
 }
