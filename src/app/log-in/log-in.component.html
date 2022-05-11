@@ -10,14 +10,20 @@
             formControlName="email"
             required
           />
-          <mat-error *ngIf="email?.errors?.['required']">Email jest wymagany</mat-error>
+          <mat-error *ngIf="email?.errors?.['required']"
+            >Email jest wymagany</mat-error
+          >
           <mat-error *ngIf="email?.errors?.['email']">Zły format</mat-error>
         </mat-form-field>
         <mat-form-field *ngIf="!isSigneedIn">
           <mat-label>Podaj hasło</mat-label>
-          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
+          <input
+            matInput
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+          />
           <button
-          type="button"
+            type="button"
             mat-icon-button
             matSuffix
             (click)="hidePassword()"
@@ -26,9 +32,19 @@
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
-          <mat-error *ngIf="password?.errors?.['required']">Hasło jest wymagane</mat-error>
+          <mat-error *ngIf="password?.errors?.['required']"
+            >Hasło jest wymagane</mat-error
+          >
         </mat-form-field>
-        <button mat-raised-button type="submit" color="primary" (click)="onSignin(email?.value, password?.value)" class="submitBtn">Zaloguj</button>
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary"
+          (click)="onSignin(email?.value, password?.value)"
+          class="submitBtn"
+        >
+          Zaloguj
+        </button>
       </form>
     </div>
   </div>

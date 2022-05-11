@@ -1,9 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  HostListener,
+  ElementRef,
+} from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { add, format } from 'date-fns';
 import { orderData } from 'src/app/shared/services/orderinterface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-order',
@@ -28,6 +35,12 @@ export class AddOrderComponent {
     date: new FormControl(this.date),
   });
 
+  @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
+    if (!this.open || this.el.nativeElement.contains(e.target)) return;
+    this.open = false;
+    this.router.navigate(['userdashboard']);
+  }
+
   flav$ = this.getProduct.GetFlavours();
   amout$ = this.getProduct.GetAmount();
 
@@ -39,7 +52,9 @@ export class AddOrderComponent {
 
   constructor(
     private getProduct: ApiService,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private el: ElementRef,
+    private router: Router
   ) {}
 
   openOrder() {
@@ -65,12 +80,4 @@ export class AddOrderComponent {
 
     this.open = false;
   }
-
-  // getDate() {
-  //   const data = localStorage.getItem('user');
-  //   const data2 = JSON.parse(data!);
-  //   const userdata = this.db.object('users/' + data2.uid + '/orders/');
-
-  //   console.log(userdata);
-  // }
 }

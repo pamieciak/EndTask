@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
@@ -17,7 +16,6 @@ import { UserService } from 'src/app/shared/services/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  // showFiller = false;
   toggleNav = false;
 
   @Output() isLogout = new EventEmitter<void>();
@@ -26,7 +24,11 @@ export class HeaderComponent {
     this.toggleNav = false;
   }
 
-  constructor(private userService: UserService, private router: Router, private el: ElementRef) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private el: ElementRef
+  ) {}
 
   logout() {
     this.userService.logOut();

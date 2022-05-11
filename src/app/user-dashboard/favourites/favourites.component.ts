@@ -1,5 +1,11 @@
-import { FactoryTarget } from '@angular/compiler';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  HostListener,
+  ElementRef,
+} from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ApiService } from 'src/app/shared/services/api.service';
 import { favInterface } from 'src/app/shared/services/favinterface';
 
@@ -10,22 +16,26 @@ import { favInterface } from 'src/app/shared/services/favinterface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavouritesComponent {
+  showflavlist = false;
   fav: favInterface[] = [];
   result: favInterface[] = [];
 
-  
-
   data1 = localStorage.getItem('user');
   data2 = JSON.parse(this.data1!);
-  showflavlist = false;
 
   showFlav$ = this.apiService.GetFlavours();
 
-  favData$ = this.apiService.getFavs(this.data2.uid).subscribe((result) => {
-    this.result = result;
-  });
+  @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
+    if (!this.showflavlist || this.el.nativeElement.contains(e.target)) return;
+    this.showflavlist = false;
+    this.router.navigate(['userdashboard']);
+  }
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private el: ElementRef,
+    private router: Router
+  ) {}
 
   showList() {
     this.showflavlist = !this.showflavlist;

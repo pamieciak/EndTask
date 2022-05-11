@@ -8,8 +8,4 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent {
-  public users$ = this.apiService.GetUser();
-
-  constructor(private apiService: ApiService) {}
-}
+export class DashboardComponent {}

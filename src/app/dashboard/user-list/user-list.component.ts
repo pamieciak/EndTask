@@ -19,7 +19,6 @@ export class UserListComponent {
   showOrd = false;
   openOrd = false;
 
-
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
     if (!this.show || this.el.nativeElement.contains(e.target)) return;
     this.show = false;
@@ -39,9 +38,6 @@ export class UserListComponent {
 
   public users$ = this.apiService.GetUser();
 
-  public usersorder$ = this.apiService
-    .GetUserwithOrder().subscribe((res) => console.log(res));
-
   showUser() {
     this.show = !this.show;
     if (this.show === false) this.router.navigate(['dashboard']);
@@ -51,7 +47,7 @@ export class UserListComponent {
     this.showOrd = !this.showOrd;
   }
 
-  openOrders(){
-    this.openOrd =!this.openOrd
+  openOrders() {
+    this.openOrd = !this.openOrd;
   }
 }

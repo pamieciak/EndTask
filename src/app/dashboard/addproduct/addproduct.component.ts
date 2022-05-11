@@ -33,7 +33,6 @@ export class AddproductComponent {
     } else this.router.navigate(['dashboard']);
   }
 
-
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -49,7 +48,6 @@ export class AddproductComponent {
 
   openFlav() {
     this.openF = !this.openF;
-    // if (this.openF === false) this.router.navigate(['dashboard']);
   }
   openAmount() {
     this.openA = !this.openA;

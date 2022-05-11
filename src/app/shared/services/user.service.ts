@@ -16,6 +16,7 @@ import { authActions } from 'src/app/store/auth/auth.actions';
 })
 export class UserService {
   user!: string | null;
+  isLoggedIn = false;
 
   constructor(
     public firebaseAuth: AngularFireAuth,
@@ -24,8 +25,6 @@ export class UserService {
     public router: Router,
     public store: Store<AppState>
   ) {}
-
-  isLoggedIn = false;
 
   signin(email: string, password: string) {
     this.firebaseAuth
@@ -61,20 +60,6 @@ export class UserService {
         });
       });
   }
-
-  // Przechowywanie w bazie danych
-  // SetUserData(user: any) {
-  //   const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(
-  //     `users/${user.uid}`
-  //   );
-  //   const userData: Userinterface = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //   };
-  //   return userRef.set(userData, {
-  //     merge: true,
-  //   });
-  // }
 
   logOut() {
     this.firebaseAuth.signOut();

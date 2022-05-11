@@ -1,17 +1,12 @@
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
   HostListener,
   ElementRef,
 } from '@angular/core';
-import {
-  AngularFireDatabase,
-  AngularFireObject,
-} from '@angular/fire/compat/database';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import { add, format } from 'date-fns';
-import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Userinterface } from '../../shared/userinterface';
 
