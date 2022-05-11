@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ApiService } from '../shared/services/api.service';
 import { forkJoin } from 'rxjs';
+import { throws } from 'assert';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,4 +9,21 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+
+  showPr=false;
+
+  productsAmount$ = this.apiService.GetAmount();
+  productsFlavour$ = this.apiService.GetFlavours();
+
+
+  constructor(private apiService: ApiService) {
+
+  }
+
+  showPorducts(){
+    this.showPr = !this.showPr;
+  }
+
+
+}

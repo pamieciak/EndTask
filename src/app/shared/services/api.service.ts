@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Userinterface } from '../userinterface';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { productinterface, productvalue } from './productinterface';
+import { productData, productinterface, productvalue } from './productinterface';
 import { orderData } from './orderinterface';
 import { favInterface } from './favinterface';
 
@@ -30,6 +30,7 @@ export class ApiService {
   GetAmount() {
     return this.db.list<productvalue>('/products/amount').valueChanges();
   }
+
 
   getOrders() {
     return this.db.list<any>('/users/').valueChanges();

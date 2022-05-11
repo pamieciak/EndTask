@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   HostListener,
   ElementRef,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -36,14 +37,25 @@ export class AddproductComponent {
   constructor(
     private apiService: ApiService,
     private router: Router,
-    private el: ElementRef
+    private el: ElementRef,
+    private cdr: ChangeDetectorRef
   ) {}
 
   addflavour() {
     this.apiService.addFlavour(this.name.value);
+    setTimeout(() => {
+      this.openF = !this.openF;
+      this.router.navigate(['dashboard']);
+      this.cdr.detectChanges();
+    }, 1000);
   }
   addAmount() {
     this.apiService.addAmount(this.value.value);
+    setTimeout(() => {
+      this.openA = !this.openA;
+      this.router.navigate(['dashboard']);
+      this.cdr.detectChanges();
+    }, 1000);
   }
 
   openFlav() {

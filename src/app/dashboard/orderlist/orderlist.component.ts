@@ -50,11 +50,7 @@ export class OrderlistComponent {
     .subscribe((results) => (this.resutls = results));
 
   showTodayOrdes() {
-    this.resutls.forEach((client) => {
-      if (client!.orders) {
-        this.todayOrders = !this.todayOrders;
-      }
-    });
+    this.todayOrders = !this.todayOrders;
     if (this.todayOrders === false) this.router.navigate(['dashboard']);
   }
 }

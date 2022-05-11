@@ -21,4 +21,37 @@
     }
 
 }
+.productList{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 60vh;
+  background-color: #fff;
+  box-shadow: 0px 10px 20px black;
+  border-radius: 8px;
 
+  .amount, .flavours{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    border: 2px solid #673ab7;
+    overflow: scroll;
+    border-radius: 8px;
+
+
+  }
+}
+
+.listButton{
+  position: absolute;
+  bottom: 5rem;
+  left: 8rem;
+}

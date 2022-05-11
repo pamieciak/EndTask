@@ -7,3 +7,26 @@
 <app-user-list></app-user-list>
 
 <app-addproduct></app-addproduct>
+
+<button mat-raised-button color="primary" class="listButton" (click)="showPorducts()">
+  pokaż listę
+</button>
+
+<ng-container *ngIf="showPr">
+  <div class="productList">
+    <div class="amount">
+      <h2>Jednostki</h2>
+      <br />
+      <div *ngFor="let prod of productsAmount$ | async">
+        <p>{{ prod.value }}</p>
+      </div>
+    </div>
+    <div class="flavours">
+      <h2>Smaki</h2>
+      <br />
+      <div *ngFor="let prod of productsFlavour$ | async">
+        <p>{{ prod.name }}</p>
+      </div>
+    </div>
+  </div>
+</ng-container>

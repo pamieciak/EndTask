@@ -11,6 +11,7 @@
 <ng-container *ngIf="showflavlist">
   <div class="flavContainer">
     <h2>Dostępne smaki</h2>
+    <br>
     <div *ngFor="let flav of showFlav$ | async">
       {{ flav.name }}
       <button (click)="addToFav(flav)">dodaj do ulubionych</button>
