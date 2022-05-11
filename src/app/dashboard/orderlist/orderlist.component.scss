@@ -1,5 +1,5 @@
-.openOrders{
-  padding: .6rem;
+.openOrders {
+  padding: 0.6rem;
   position: absolute;
   top: 14%;
   left: 50%;
@@ -12,8 +12,8 @@
   transition: all 0.3s;
 }
 
-
-.orderBox, .showErr{
+.orderBox,
+.showErr {
   position: absolute;
   top: 48%;
   left: 50%;
@@ -30,18 +30,17 @@
   overflow: scroll;
   text-align: center;
 
-  .name{
+  .name {
     margin: 0.3rem;
     width: 100%;
     text-align: center;
 
-    p{
+    p {
       font-size: 1.5rem;
       font-weight: bold;
     }
-
   }
-  .order{
+  .order {
     margin: 0.3rem;
     width: 100%;
     text-align: center;

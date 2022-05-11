@@ -33,18 +33,6 @@ export class AddproductComponent {
     } else this.router.navigate(['dashboard']);
   }
 
-  // @HostListener('document:click', ['$event']) public hide(e: MouseEvent) {
-  //   if (!this.openA || this.el.nativeElement.contains(e.target)) return;
-  //   this.openA = false;
-  //   // console.log(e.target);
-  //   // if ((e.target as HTMLElement).classList.contains('users')) {
-  //   //   this.router.navigate(['dashboard/user-list']);
-  //   // } else if ((e.target as HTMLElement).classList.contains('adduser')) {
-  //   //   this.router.navigate(['dashboard/add-user']);
-  //   // } else if ((e.target as HTMLElement).classList.contains('adduser')) {
-  //   //   this.router.navigate(['dashboard/add-user']);
-  //   // } else this.router.navigate(['dashboard']);
-  // }
 
   constructor(
     private apiService: ApiService,

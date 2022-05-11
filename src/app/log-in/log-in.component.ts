@@ -12,12 +12,11 @@ import { UserService } from '../shared/services/user.service';
 export class LogInComponent implements OnInit {
   hide = true;
   isSigneedIn = false;
-  
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
-
 
   constructor(private userService: UserService, public router: Router) {}
 
