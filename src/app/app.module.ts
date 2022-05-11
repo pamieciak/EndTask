@@ -14,14 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { LogInComponent } from './log-in/log-in.component';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatDividerModule } from '@angular/material/divider';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -37,6 +29,7 @@ import { FavouritesComponent } from './user-dashboard/favourites/favourites.comp
 import { OrderlistComponent } from './dashboard/orderlist/orderlist.component';
 import { AppState } from './store/app.state';
 import { authReducer } from './store/auth/auth.reducer';
+import { MaterialModule } from './shared/material.module';
 
 const routes: Routes = [
   {
@@ -67,19 +60,23 @@ const routes: Routes = [
       },
       {
         path: 'order-list',
-        component: AddOrderComponent,
+        component: OrderlistComponent,
       },
     ],
   },
   {
     path: 'userdashboard',
-    component: UserDashboardComponent, children: [{
-      path:'add-order',
-      component: AddOrderComponent
-    },{
-      path:'icecream-list',
-      component: FavouritesComponent
-    }]
+    component: UserDashboardComponent,
+    children: [
+      {
+        path: 'add-order',
+        component: AddOrderComponent,
+      },
+      {
+        path: 'icecream-list',
+        component: FavouritesComponent,
+      },
+    ],
   },
 ];
 
@@ -103,7 +100,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
     StoreModule.forRoot<AppState>({
-      auth: authReducer
+      auth: authReducer,
     }),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -111,14 +108,7 @@ const routes: Routes = [
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatDividerModule,
+    MaterialModule,
   ],
   exports: [RouterModule],
   providers: [],
