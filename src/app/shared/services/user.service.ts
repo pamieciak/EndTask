@@ -7,6 +7,9 @@ import { Userinterface } from '../userinterface';
 import { ApiService } from './api.service';
 import { apiInterface } from './apiinterface';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
+import { authActions } from 'src/app/store/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +21,8 @@ export class UserService {
     public firebaseAuth: AngularFireAuth,
     public fireStore: AngularFirestore,
     public apiService: ApiService,
-    public router: Router
+    public router: Router,
+    public store: Store<AppState>
   ) {}
 
   isLoggedIn = false;
@@ -36,7 +40,7 @@ export class UserService {
           this.isLoggedIn = true;
           localStorage.setItem('user', JSON.stringify(res.user));
           this.user = res.user.displayName;
-          console.log(this.firebaseAuth.currentUser);
+          this.store.dispatch(authActions.setAuth());
           this.router.navigate(['dashboard']);
         }
       });
@@ -46,10 +50,10 @@ export class UserService {
     this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        this.apiService.SetUserData(res.user!.uid,{
+        this.apiService.SetUserData(res.user!.uid, {
           name: name,
           email: email,
-          displayName: "customer",
+          displayName: 'customer',
           orders: [],
         });
         res.user?.updateProfile({
@@ -74,6 +78,7 @@ export class UserService {
 
   logOut() {
     this.firebaseAuth.signOut();
+    this.store.dispatch(authActions.setNoAuth());
     localStorage.removeItem('user');
   }
 }

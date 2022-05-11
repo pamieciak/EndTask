@@ -18,30 +18,12 @@
           </tr>
         </thead>
         <tbody *ngFor="let res of users$ | async">
-          <!-- <td *ngFor="let ord of res.orders ">{{ ord. | json }}</td> -->
           <td>
             {{ res.name }}
-            <!-- <button
-              mat-raised-button
-              color="primary"
-              *ngIf="res.orders"
-              (click)="openOrders()"
-            >
-              <mat-icon>shopping_basket</mat-icon>
-            </button> -->
           </td>
           <td>{{ res.email }}</td>
-          <!-- <td *ngFor="let ord of res.orders"> {{ord.flavour}} {{ord.amount}}  </td> -->
         </tbody>
       </table>
     </div>
   </ng-container>
 </div>
-
-<!-- <div *ngFor="let ord of usersorder$ | async">
-
-    {{ord | json}} -->
-<!-- <div class="showorder" *ngFor="let ord of res.orders ">{{ ord | json }}>
-
-    </div> -->
-<!-- </div> -->

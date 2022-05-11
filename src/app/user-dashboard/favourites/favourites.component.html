@@ -3,6 +3,7 @@
   color="primary"
   class="showListBtn"
   (click)="showList()"
+  [routerLink]="['icecream-list']"
 >
   <mat-icon>list_alt</mat-icon>
 </button>
@@ -11,8 +12,8 @@
   <div class="flavContainer">
     <h2>Dostępne smaki</h2>
     <div *ngFor="let flav of showFlav$ | async">
-      {{ flav.name }} <button (click)="addToFav(flav)">dodaj do ulubionych</button>
-      <!-- <button (click)="addtofav(flav.name)">{{ flav.name | json }}</button> -->
+      {{ flav.name }}
+      <button (click)="addToFav(flav)">dodaj do ulubionych</button>
     </div>
   </div>
 </ng-container>

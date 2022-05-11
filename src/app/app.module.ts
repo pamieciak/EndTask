@@ -35,6 +35,8 @@ import { AddproductComponent } from './dashboard/addproduct/addproduct.component
 import { AddOrderComponent } from './user-dashboard/add-order/add-order.component';
 import { FavouritesComponent } from './user-dashboard/favourites/favourites.component';
 import { OrderlistComponent } from './dashboard/orderlist/orderlist.component';
+import { AppState } from './store/app.state';
+import { authReducer } from './store/auth/auth.reducer';
 
 const routes: Routes = [
   {
@@ -71,7 +73,13 @@ const routes: Routes = [
   },
   {
     path: 'userdashboard',
-    component: UserDashboardComponent,
+    component: UserDashboardComponent, children: [{
+      path:'add-order',
+      component: AddOrderComponent
+    },{
+      path:'icecream-list',
+      component: FavouritesComponent
+    }]
   },
 ];
 
@@ -94,7 +102,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot<AppState>({
+      auth: authReducer
+    }),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
