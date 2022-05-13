@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
   HostListener,
   ElementRef,
@@ -17,6 +16,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddproductComponent {
+
   openF = false;
   openA = false;
 
@@ -49,6 +49,7 @@ export class AddproductComponent {
       this.cdr.detectChanges();
     }, 1000);
   }
+  
   addAmount() {
     this.apiService.addAmount(this.value.value);
     setTimeout(() => {

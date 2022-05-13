@@ -19,8 +19,8 @@ import { Userinterface } from '../../shared/userinterface';
 export class OrderlistComponent {
   todayOrders = false;
   showErr = false;
-
   resutls: Userinterface[] = [];
+
   date = format(add(new Date(), { days: 0 }), 'y-MM-dd');
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {

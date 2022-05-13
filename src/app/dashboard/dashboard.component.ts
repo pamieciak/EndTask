@@ -10,20 +10,14 @@ import { throws } from 'assert';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
-
-  showPr=false;
+  showPr = false;
 
   productsAmount$ = this.apiService.GetAmount();
   productsFlavour$ = this.apiService.GetFlavours();
 
+  constructor(private apiService: ApiService) {}
 
-  constructor(private apiService: ApiService) {
-
-  }
-
-  showPorducts(){
+  showPorducts() {
     this.showPr = !this.showPr;
   }
-
-
 }

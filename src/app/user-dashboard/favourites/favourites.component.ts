@@ -43,9 +43,7 @@ export class FavouritesComponent {
 
   addToFav(flav: favInterface) {
     this.fav.push(flav);
-    // this.apiService.getFavs(this.data2.uid).subscribe((result) => {
-    //   this.result = result;
-    // });
+
     this.apiService.addToFavourites(this.data2.uid, this.fav);
 
     console.log(this.fav);

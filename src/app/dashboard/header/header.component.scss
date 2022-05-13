@@ -8,7 +8,7 @@ header {
   }
 }
 
-mat-icon{
+mat-icon {
   font-size: 2.5rem;
 }
 
@@ -20,20 +20,19 @@ mat-icon{
   display: flex;
   justify-content: flex-start;
   position: absolute;
-  right:-200px;
+  right: -200px;
   width: 150px;
   height: 6vh;
   background-color: #fff;
   transition: transform 0.3s;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
   z-index: 3;
-
 }
 .slideMenu.active {
   transform: translateX(-200px);
 }
 
-.logout{
+.logout {
   display: inline-block;
   font-size: 1.1rem;
   margin-left: 1.5rem;
