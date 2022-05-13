@@ -49,7 +49,7 @@ export class UserService {
     this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        this.apiService.SetUserData(res.user!.uid, {
+        this.apiService.setUserData(res.user!.uid, {
           name: name,
           email: email,
           displayName: 'customer',

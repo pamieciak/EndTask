@@ -17,8 +17,8 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class ProductListComponent {
   showProduct = false;
 
-  productsAmount$ = this.apiService.GetAmount();
-  productsFlavour$ = this.apiService.GetFlavours();
+  productsAmount$ = this.apiService.getAmount();
+  productsFlavour$ = this.apiService.getFlavours();
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
     if (!this.showProduct || this.el.nativeElement.contains(e.target)) return;

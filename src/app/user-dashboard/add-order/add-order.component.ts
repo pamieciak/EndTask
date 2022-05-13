@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
   HostListener,
   ElementRef,
@@ -42,8 +41,8 @@ export class AddOrderComponent {
     this.router.navigate(['userdashboard']);
   }
 
-  flav$ = this.getProduct.GetFlavours();
-  amout$ = this.getProduct.GetAmount();
+  flav$ = this.getProduct.getFlavours();
+  amout$ = this.getProduct.getAmount();
 
   orderData$ = this.getProduct
     .getOrderData(this.data2.uid)

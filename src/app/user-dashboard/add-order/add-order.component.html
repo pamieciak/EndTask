@@ -40,8 +40,8 @@
       </form>
     </div>
     <div class="orderList">
-      <ul *ngFor="let ord of order; let i = index">
-        <li>{{ order[i].flavour }} | {{ order[i].amount }}</li>
+      <ul *ngFor="let orderItem of order">
+        <li>{{ orderItem.flavour }} | {{ orderItem.amount }}</li>
       </ul>
     </div>
   </div>

@@ -5,22 +5,22 @@
   class="openOrders"
   [routerLink]="['order-list']"
 >
-  Dzisiejsze zamówienia
+  Zamówienia do realizacji
 </button>
 
 <ng-container *ngIf="todayOrders">
   <div class="orderBox">
-    <div *ngFor="let ord of orders$ | async">
-      <div class="name" *ngIf="ord">
-        <p>{{ ord}}</p>
+    <div *ngFor="let order of orders$ | async">
+      <div class="name" *ngIf="order.orders">
+        <p>{{ order.name }}</p>
       </div>
-      <!-- <div class="order" *ngFor="let o of ord">
-        <P>zamówienie: {{ o.flavour }} | {{ o.amount }}</P>
-        <P>data: {{ o.date }}</P> -->
+      <div class="order" *ngFor="let orderDetails of order.orders">
+        <p>
+          zamówienie: {{ orderDetails.flavour }} | {{ orderDetails.amount }}
+        </p>
+        <P>data: {{ orderDetails.date }}</P>
       </div>
     </div>
-  <!-- </div> -->
+  </div>
 </ng-container>
-<div *ngIf="showErr" class="showErr">
-  <h1>Brak zamówień na dziś</h1>
-</div>
+

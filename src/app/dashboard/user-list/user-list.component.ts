@@ -35,7 +35,7 @@ export class UserListComponent {
     private el: ElementRef
   ) {}
 
-  public users$ = this.apiService.GetUser();
+  public users$ = this.apiService.getUser();
 
   showUser() {
     this.show = !this.show;

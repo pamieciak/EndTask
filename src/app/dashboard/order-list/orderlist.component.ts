@@ -19,7 +19,6 @@ import { User } from '../../shared/interfaces/user.interface';
 })
 export class OrderlistComponent {
   todayOrders = false;
-  showErr = false;
   results: User[] = [];
 
   date = format(add(new Date(), { days: 0 }), 'y-MM-dd');
@@ -46,9 +45,6 @@ export class OrderlistComponent {
 
   orders$ = this.apiService.getOrders();
 
-  orders2$ = this.apiService
-    .getOrders()
-    .subscribe((results) => (this.results = results));
 
   showTodayOrdes() {
    this.todayOrders = !this.todayOrders

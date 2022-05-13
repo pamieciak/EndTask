@@ -10,13 +10,20 @@
 }
 
 html {
-  font-size: 62,5%;
+  font-size: 62, 5%;
   overflow: hidden;
 }
 
 body {
   position: relative;
   height: 100vh;
+  background: rgb(176, 173, 241);
+  background: linear-gradient(
+    140deg,
+    rgba(176, 173, 241, 1) 0%,
+    rgba(152, 216, 235, 1) 49%,
+    rgba(157, 238, 255, 1) 100%
+  );
   background-color: #fff;
   font-family: Lato, sans-serif;
   overflow-x: hidden;

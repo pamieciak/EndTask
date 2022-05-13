@@ -23,7 +23,7 @@ export class FavouritesComponent {
   data1 = localStorage.getItem('user');
   data2 = JSON.parse(this.data1!);
 
-  showFlav$ = this.apiService.GetFlavours();
+  showFlav$ = this.apiService.getFlavours();
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
     if (!this.showFlavList || this.el.nativeElement.contains(e.target)) return;

@@ -23,11 +23,11 @@ export class ApiService {
     return this.db.list<Value>('/products/amount').push({ value: value });
   }
 
-  GetFlavours() {
+  getFlavours() {
     return this.db.list<Name>('/products/flavours').valueChanges();
   }
 
-  GetAmount() {
+  getAmount() {
     return this.db.list<Value>('/products/amount').valueChanges();
   }
 
@@ -50,8 +50,6 @@ export class ApiService {
       });
   }
 
-
-  
   removeFlavour(flavour: Name) {
     this.db
       .list('/products/flavours')
@@ -79,11 +77,11 @@ export class ApiService {
     return this.db.list<Order>('users/' + uid + '/orders/').valueChanges();
   }
 
-  GetUser() {
+  getUser() {
     return this.db.list<User>('/users/').valueChanges();
   }
 
-  SetUserData(uid: string, user: User) {
+  setUserData(uid: string, user: User) {
     this.db.object('users/' + uid).set(user);
   }
 
