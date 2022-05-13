@@ -19,8 +19,9 @@ export class HeaderComponent {
   toggle = false;
 
   @Output() isLogout = new EventEmitter<void>();
-  
+
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
+    
     if (!this.toggle || this.el.nativeElement.contains(e.target)) return;
     this.toggle = false;
   }

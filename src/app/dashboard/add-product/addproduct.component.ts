@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-addproduct',
-  templateUrl: './addproduct.component.html',
+  templateUrl: './add-product.component.html',
   styleUrls: ['./addproduct.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -23,13 +23,16 @@ export class AddproductComponent {
   value = new FormControl('', [Validators.required]);
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
+
     if (!this.openF || this.el.nativeElement.contains(e.target)) return;
     this.openF = false;
-    console.log(e.target);
+
     if ((e.target as HTMLElement).classList.contains('users')) {
       this.router.navigate(['dashboard/user-list']);
+
     } else if ((e.target as HTMLElement).classList.contains('adduser')) {
       this.router.navigate(['dashboard/add-user']);
+
     } else this.router.navigate(['dashboard']);
   }
 
@@ -42,6 +45,7 @@ export class AddproductComponent {
 
   addFlavour() {
     this.apiService.addFlavour(this.name.value);
+
     setTimeout(() => {
       this.openF = !this.openF;
       this.router.navigate(['dashboard']);
@@ -51,6 +55,7 @@ export class AddproductComponent {
 
   addAmount() {
     this.apiService.addAmount(this.value.value);
+
     setTimeout(() => {
       this.openA = !this.openA;
       this.router.navigate(['dashboard']);

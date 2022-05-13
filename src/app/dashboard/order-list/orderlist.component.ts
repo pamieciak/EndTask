@@ -7,13 +7,13 @@ import {
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import { add, format } from 'date-fns';
-import { Order } from 'src/app/shared/interfaces/orderinterface';
+import { Order } from 'src/app/shared/interfaces/order.interface';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { User } from '../../shared/interfaces/userinterface';
+import { User } from '../../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-orderlist',
-  templateUrl: './orderlist.component.html',
+  templateUrl: './order-list.component.html',
   styleUrls: ['./orderlist.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -27,7 +27,7 @@ export class OrderlistComponent {
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
     if (!this.todayOrders || this.el.nativeElement.contains(e.target)) return;
     this.todayOrders = false;
-    console.log(e.target);
+
     if ((e.target as HTMLElement).classList.contains('adduser')) {
       this.router.navigate(['dashboard/add-user']);
     } else if ((e.target as HTMLElement).classList.contains('addFlav')) {
@@ -51,9 +51,7 @@ export class OrderlistComponent {
     .subscribe((results) => (this.results = results));
 
   showTodayOrdes() {
-    this.results.forEach((res) => {
-      console.log(res);
-    });
+   this.todayOrders = !this.todayOrders
 
     if (this.todayOrders === false) this.router.navigate(['dashboard']);
   }

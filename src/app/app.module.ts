@@ -18,17 +18,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { StoreModule } from '@ngrx/store';
-import { AdduserComponent } from './dashboard/adduser/adduser.component';
+import { AdduserComponent } from './dashboard/add-user/adduser.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './dashboard/user-list/user-list.component';
-import { AddproductComponent } from './dashboard/addproduct/addproduct.component';
+import { AddproductComponent } from './dashboard/add-product/addproduct.component';
 import { AddOrderComponent } from './user-dashboard/add-order/add-order.component';
 import { FavouritesComponent } from './user-dashboard/favourites/favourites.component';
-import { OrderlistComponent } from './dashboard/orderlist/orderlist.component';
+import { OrderlistComponent } from './dashboard/order-list/orderlist.component';
 import { AppState } from './store/app.state';
 import { authReducer } from './store/auth/auth.reducer';
 import { MaterialModule } from './shared/material.module';
+import { ProductListComponent } from './dashboard/product-list/product-list.component';
 
 const routes: Routes = [
   {
@@ -92,6 +93,7 @@ const routes: Routes = [
     AddOrderComponent,
     FavouritesComponent,
     OrderlistComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

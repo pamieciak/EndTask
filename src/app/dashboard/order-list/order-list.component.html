@@ -12,7 +12,7 @@
   <div class="orderBox">
     <div *ngFor="let ord of orders$ | async">
       <div class="name" *ngIf="ord">
-        <p>{{ ord | json }}</p>
+        <p>{{ ord}}</p>
       </div>
       <!-- <div class="order" *ngFor="let o of ord">
         <P>zamówienie: {{ o.flavour }} | {{ o.amount }}</P>

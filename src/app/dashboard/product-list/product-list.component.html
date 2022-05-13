@@ -1,0 +1,45 @@
+<button
+  mat-raised-button
+  color="primary"
+  class="listButton"
+  (click)="showPorducts()"
+>
+  pokaż listę
+</button>
+
+<ng-container *ngIf="showProduct">
+  <div class="productList">
+    <div class="amount">
+      <h2>Jednostki</h2>
+      <br />
+      <ng-container *ngIf="productsAmount$ | async as productsAmount">
+        <div *ngFor="let product of productsAmount">
+          {{ product.value }}
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="removeAmount({ value: product.value })"
+          >
+            usuń
+          </button>
+        </div>
+      </ng-container>
+    </div>
+    <div class="flavours">
+      <h2>Smaki</h2>
+      <br />
+      <ng-container *ngIf="productsFlavour$ | async as productsFlavour">
+        <div *ngFor="let product of productsFlavour">
+          {{ product.name }}
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="removeFlavour({ name: product.name })"
+          >
+            usuń
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

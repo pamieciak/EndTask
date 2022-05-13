@@ -21,7 +21,9 @@ export class LogInComponent implements OnInit {
   constructor(private userService: UserService, public router: Router) {}
 
   ngOnInit() {
+
     if (localStorage.getItem('user') !== null) this.isSigneedIn = true;
+    
     else this.isSigneedIn = false;
   }
 

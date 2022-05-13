@@ -9,7 +9,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { add, format } from 'date-fns';
-import { Order } from 'src/app/shared/interfaces/orderinterface';
+import { Order } from 'src/app/shared/interfaces/order.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -36,7 +36,6 @@ export class AddOrderComponent {
   });
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
-
     if (!this.openOrders || this.el.nativeElement.contains(e.target)) return;
 
     this.openOrders = false;
@@ -60,12 +59,10 @@ export class AddOrderComponent {
   ) {}
 
   openOrder() {
-
     if (this.result[0] === undefined || this.result[0].date !== this.date) {
       this.openOrders = !this.openOrders;
 
-    } else
-    {
+    } else {
       this.openOrders = false;
       this.openMessage = !this.openMessage;
     }
