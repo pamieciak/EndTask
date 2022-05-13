@@ -7,7 +7,7 @@ import {
 import { Router } from '@angular/router';
 
 import { ApiService } from 'src/app/shared/services/api.service';
-import { favInterface } from 'src/app/shared/services/favinterface';
+import { Favourite } from 'src/app/shared/interfaces/favinterface';
 
 @Component({
   selector: 'app-favourites',
@@ -17,8 +17,8 @@ import { favInterface } from 'src/app/shared/services/favinterface';
 })
 export class FavouritesComponent {
   showflavlist = false;
-  fav: favInterface[] = [];
-  result: favInterface[] = [];
+  fav: Favourite[] = [];
+  result: Favourite[] = [];
 
   data1 = localStorage.getItem('user');
   data2 = JSON.parse(this.data1!);
@@ -41,7 +41,7 @@ export class FavouritesComponent {
     this.showflavlist = !this.showflavlist;
   }
 
-  addToFav(flav: favInterface) {
+  addToFav(flav: Favourite) {
     this.fav.push(flav);
 
     this.apiService.addToFavourites(this.data2.uid, this.fav);

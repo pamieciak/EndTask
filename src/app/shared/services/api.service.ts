@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Userinterface } from '../userinterface';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-import {
-  productData,
-  productinterface,
-  productvalue,
-} from './productinterface';
-import { orderData } from './orderinterface';
-import { favInterface } from './favinterface';
+import { Name, Value } from '../interfaces/productinterface';
+import { Order } from '../interfaces/orderinterface';
+import { Favourite } from '../interfaces/favinterface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,31 +12,27 @@ export class ApiService {
   constructor(private db: AngularFireDatabase) {}
 
   addFlavour(name: string) {
-    return this.db
-      .list<productinterface>('/products/flavours')
-      .push({ name: name });
+    return this.db.list<Name>('/products/flavours').push({ name: name });
   }
 
   addAmount(value: string) {
-    return this.db
-      .list<productvalue>('/products/amount')
-      .push({ value: value });
+    return this.db.list<Value>('/products/amount').push({ value: value });
   }
 
   GetFlavours() {
-    return this.db.list<productinterface>('/products/flavours').valueChanges();
+    return this.db.list<Name>('/products/flavours').valueChanges();
   }
 
   GetAmount() {
-    return this.db.list<productvalue>('/products/amount').valueChanges();
+    return this.db.list<Value>('/products/amount').valueChanges();
   }
 
   getOrders() {
-    return this.db.list<any>('/users/').valueChanges();
+    return this.db.list<Order>('/users/').valueChanges();
   }
 
   getOrderData(uid: string) {
-    return this.db.list<orderData>('users/' + uid + '/orders/').valueChanges();
+    return this.db.list<Order>('users/' + uid + '/orders/').valueChanges();
   }
 
   GetUser() {
@@ -51,7 +43,7 @@ export class ApiService {
     this.db.object('users/' + uid).set(user);
   }
 
-  addToFavourites(uid: string, data: favInterface[]) {
+  addToFavourites(uid: string, data: Favourite[]) {
     this.db.object('users/' + uid + '/favs/').set(data);
   }
 

@@ -11,15 +11,15 @@
 <ng-container *ngIf="todayOrders">
   <div class="orderBox">
     <div *ngFor="let ord of orders$ | async">
-      <div class="name" *ngIf="ord.orders">
-        <p>{{ ord.name }}</p>
+      <div class="name" *ngIf="ord">
+        <p>{{ ord | json }}</p>
       </div>
-      <div class="order" *ngFor="let o of ord.orders">
+      <!-- <div class="order" *ngFor="let o of ord">
         <P>zamówienie: {{ o.flavour }} | {{ o.amount }}</P>
-        <P>data: {{ o.date }}</P>
+        <P>data: {{ o.date }}</P> -->
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </ng-container>
 <div *ngIf="showErr" class="showErr">
   <h1>Brak zamówień na dziś</h1>

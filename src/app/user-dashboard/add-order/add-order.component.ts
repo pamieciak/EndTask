@@ -9,7 +9,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { add, format } from 'date-fns';
-import { orderData } from 'src/app/shared/services/orderinterface';
+import { Order } from 'src/app/shared/interfaces/orderinterface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,8 +19,8 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddOrderComponent {
-  result: orderData[] = [];
-  order: orderData[] = [];
+  result: Order[] = [];
+  order: Order[] = [];
   open = false;
   openMessage = false;
 

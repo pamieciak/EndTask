@@ -7,6 +7,7 @@ import {
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import { add, format } from 'date-fns';
+import { Order } from 'src/app/shared/interfaces/orderinterface';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Userinterface } from '../../shared/userinterface';
 
@@ -19,7 +20,7 @@ import { Userinterface } from '../../shared/userinterface';
 export class OrderlistComponent {
   todayOrders = false;
   showErr = false;
-  resutls: Userinterface[] = [];
+  results: Order[] = [];
 
   date = format(add(new Date(), { days: 0 }), 'y-MM-dd');
 
@@ -47,10 +48,13 @@ export class OrderlistComponent {
 
   orders2$ = this.apiService
     .getOrders()
-    .subscribe((results) => (this.resutls = results));
+    .subscribe((results) => (this.results = results));
 
   showTodayOrdes() {
-    this.todayOrders = !this.todayOrders;
+    this.results.forEach((res) => {
+      console.log(res);
+    });
+
     if (this.todayOrders === false) this.router.navigate(['dashboard']);
   }
 }

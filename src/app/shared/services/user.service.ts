@@ -5,7 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Userinterface } from '../userinterface';
 import { ApiService } from './api.service';
-import { apiInterface } from './apiinterface';
+import { Api } from '../interfaces/apiinterface';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
@@ -31,7 +31,7 @@ export class UserService {
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
         if (res.user?.email) {
-          const userData: apiInterface = {
+          const userData: Api = {
             uid: res.user.uid,
             email: res.user.email,
             displayName: res.user.displayName,

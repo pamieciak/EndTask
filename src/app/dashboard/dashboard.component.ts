@@ -1,7 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ApiService } from '../shared/services/api.service';
-import { forkJoin } from 'rxjs';
-import { throws } from 'assert';
 
 @Component({
   selector: 'app-dashboard',

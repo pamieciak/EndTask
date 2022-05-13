@@ -1,8 +1,6 @@
 import {
   Component,
-  OnInit,
   ChangeDetectionStrategy,
-  Input,
   ChangeDetectorRef,
   HostListener,
   ElementRef,
