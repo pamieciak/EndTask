@@ -1,7 +1,6 @@
-.addFlavBtn,
-.addAmBtn {
+.addFlavBtn {
   position: absolute;
-  bottom: 0.6rem;
+  bottom: 1rem;
   left: 2rem;
   width: 50px;
   height: 60px;
@@ -19,34 +18,21 @@
   }
 }
 
-.addAmBtn {
-  bottom: 5rem;
-  left: 2rem;
-
-  mat-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5rem;
-  }
-}
-.addFlavBtn:hover,
-.addAmBtn:hover {
+.addFlavBtn:hover {
   transform: scale(1.1);
 }
 
-.modal,
-.amountmodal {
+.modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 90vw;
-  height: 30vh;
+  height: 60vh;
   background-color: #fff;
   box-shadow: 0px 10px 20px black;
   border-radius: 8px;

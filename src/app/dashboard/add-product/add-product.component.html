@@ -1,42 +1,6 @@
 <button
   mat-raised-button
   color="primary"
-  class="addAmBtn"
-  (click)="openAmount()"
->
-  <mat-icon class="addAmount">fitness_center</mat-icon>
-</button>
-
-<div *ngIf="openA" class="amountmodal">
-  <p>Dodaj jednostkę</p>
-  <form>
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="wpisz dowolną jednostkę"
-        [formControl]="value"
-        required
-      />
-      <mat-error *ngIf="value?.errors?.['required']"
-        >Jednostka jest wymagana</mat-error
-      >
-    </mat-form-field>
-    <button
-      type="button"
-      mat-raised-button
-      color="primary"
-      [disabled]="value.invalid"
-      (click)="addAmount()"
-    >
-      dodaj jednostkę
-    </button>
-  </form>
-</div>
-
-
-<button
-  mat-raised-button
-  color="primary"
   class="addFlavBtn"
   (click)="openFlav()"
   [routerLink]="['add-flav']"
@@ -66,6 +30,29 @@
       (click)="addFlavour()"
     >
       dodaj smak
+    </button>
+  </form>
+  <p>Dodaj jednostkę</p>
+  <form>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="wpisz dowolną jednostkę"
+        [formControl]="value"
+        required
+      />
+      <mat-error *ngIf="value?.errors?.['required']"
+        >Jednostka jest wymagana</mat-error
+      >
+    </mat-form-field>
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="value.invalid"
+      (click)="addAmount()"
+    >
+      dodaj jednostkę
     </button>
   </form>
 </div>

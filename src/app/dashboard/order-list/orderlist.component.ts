@@ -7,7 +7,6 @@ import {
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import { add, format } from 'date-fns';
-import { Order } from 'src/app/shared/interfaces/order.interface';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { User } from '../../shared/interfaces/user.interface';
 
@@ -45,9 +44,8 @@ export class OrderlistComponent {
 
   orders$ = this.apiService.getOrders();
 
-
   showTodayOrdes() {
-   this.todayOrders = !this.todayOrders
+    this.todayOrders = !this.todayOrders;
 
     if (this.todayOrders === false) this.router.navigate(['dashboard']);
   }

@@ -1,6 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ApiService } from '../shared/services/api.service';
-import { from, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +6,4 @@ import { from, Observable, tap } from 'rxjs';
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent {
-  
-}
+export class DashboardComponent {}
