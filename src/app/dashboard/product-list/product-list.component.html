@@ -9,34 +9,34 @@
 
 <ng-container *ngIf="showProduct">
   <div class="productList">
+    <h2>Jednostki</h2>
     <div class="amount">
-      <h2>Jednostki</h2>
       <br />
       <ng-container *ngIf="productsAmount$ | async as productsAmount">
-        <div *ngFor="let product of productsAmount">
-          {{ product.value }}
+        <div class="item" *ngFor="let product of productsAmount">
+          <p>{{ product.value }}</p>
           <button
-            mat-raised-button
-            color="primary"
+            mat-fab
+            color="warn"
             (click)="removeAmount({ value: product.value })"
           >
-            usuń
+            X
           </button>
         </div>
       </ng-container>
     </div>
+    <h2>Smaki</h2>
     <div class="flavours">
-      <h2>Smaki</h2>
       <br />
       <ng-container *ngIf="productsFlavour$ | async as productsFlavour">
-        <div *ngFor="let product of productsFlavour">
+        <div class="item" *ngFor="let product of productsFlavour">
           {{ product.name }}
           <button
-            mat-raised-button
-            color="primary"
+            mat-fab
+            color="warn"
             (click)="removeFlavour({ name: product.name })"
           >
-            usuń
+            X
           </button>
         </div>
       </ng-container>

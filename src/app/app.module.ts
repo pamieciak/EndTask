@@ -47,7 +47,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'add-flav',
+        path: 'add-product',
         component: AddproductComponent,
       },
       {
