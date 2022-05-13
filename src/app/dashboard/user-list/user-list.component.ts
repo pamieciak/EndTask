@@ -21,7 +21,6 @@ export class UserListComponent {
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
     if (!this.show || this.el.nativeElement.contains(e.target)) return;
     this.show = false;
-    console.log(e.target);
     if ((e.target as HTMLElement).classList.contains('adduser')) {
       this.router.navigate(['dashboard/add-user']);
     } else if ((e.target as HTMLElement).classList.contains('addFlav')) {

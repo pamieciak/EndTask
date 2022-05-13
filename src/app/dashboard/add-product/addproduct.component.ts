@@ -40,13 +40,11 @@ export class AddproductComponent {
 
   addFlavour() {
     this.apiService.addFlavour(this.name.value);
-    alert('smak dodany');
     this.name.setValue('');
   }
 
   addAmount() {
     this.apiService.addAmount(this.value.value);
-    alert('smak dodany');
     this.value.setValue('');
   }
 

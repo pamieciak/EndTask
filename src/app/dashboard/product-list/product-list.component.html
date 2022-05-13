@@ -31,11 +31,7 @@
       <ng-container *ngIf="productsFlavour$ | async as productsFlavour">
         <div class="item" *ngFor="let product of productsFlavour">
           {{ product.name }}
-          <button
-            mat-fab
-            color="warn"
-            (click)="removeFlavour({ name: product.name })"
-          >
+          <button mat-fab color="warn" (click)="removeFlavour(product)">
             X
           </button>
         </div>

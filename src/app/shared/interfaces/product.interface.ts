@@ -1,4 +1,4 @@
-export interface Name {
+export interface Flavour {
   name: string;
 }
 export interface Value {

@@ -1,12 +1,9 @@
-import { VariableBinding } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { User } from '../interfaces/user.interface';
 import { ApiService } from './api.service';
 import { Api } from '../interfaces/api.nterface';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { authActions } from 'src/app/store/auth/auth.actions';
