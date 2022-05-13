@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { add, format } from 'date-fns';
 import { Order } from 'src/app/shared/interfaces/orderinterface';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { Userinterface } from '../../shared/userinterface';
+import { User } from '../../shared/interfaces/userinterface';
 
 @Component({
   selector: 'app-orderlist',
@@ -20,7 +20,7 @@ import { Userinterface } from '../../shared/userinterface';
 export class OrderlistComponent {
   todayOrders = false;
   showErr = false;
-  results: Order[] = [];
+  results: User[] = [];
 
   date = format(add(new Date(), { days: 0 }), 'y-MM-dd');
 

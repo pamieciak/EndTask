@@ -16,7 +16,6 @@ import { ApiService } from 'src/app/shared/services/api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddproductComponent {
-
   openF = false;
   openA = false;
 
@@ -41,7 +40,7 @@ export class AddproductComponent {
     private cdr: ChangeDetectorRef
   ) {}
 
-  addflavour() {
+  addFlavour() {
     this.apiService.addFlavour(this.name.value);
     setTimeout(() => {
       this.openF = !this.openF;
@@ -49,7 +48,7 @@ export class AddproductComponent {
       this.cdr.detectChanges();
     }, 1000);
   }
-  
+
   addAmount() {
     this.apiService.addAmount(this.value.value);
     setTimeout(() => {

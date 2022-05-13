@@ -16,12 +16,13 @@ import { UserService } from 'src/app/shared/services/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  toggleNav = false;
+  toggle = false;
 
   @Output() isLogout = new EventEmitter<void>();
+  
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
-    if (!this.toggleNav || this.el.nativeElement.contains(e.target)) return;
-    this.toggleNav = false;
+    if (!this.toggle || this.el.nativeElement.contains(e.target)) return;
+    this.toggle = false;
   }
 
   constructor(
@@ -30,12 +31,12 @@ export class HeaderComponent {
     private el: ElementRef
   ) {}
 
-  logout() {
+  logOut() {
     this.userService.logOut();
     this.isLogout.emit();
     this.router.navigate(['log-in']);
   }
-  togglenav() {
-    this.toggleNav = !this.toggleNav;
+  toggleNav() {
+    this.toggle = !this.toggle;
   }
 }

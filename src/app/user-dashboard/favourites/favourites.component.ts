@@ -16,7 +16,7 @@ import { Favourite } from 'src/app/shared/interfaces/favinterface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavouritesComponent {
-  showflavlist = false;
+  showFlavList = false;
   fav: Favourite[] = [];
   result: Favourite[] = [];
 
@@ -26,8 +26,8 @@ export class FavouritesComponent {
   showFlav$ = this.apiService.GetFlavours();
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
-    if (!this.showflavlist || this.el.nativeElement.contains(e.target)) return;
-    this.showflavlist = false;
+    if (!this.showFlavList || this.el.nativeElement.contains(e.target)) return;
+    this.showFlavList = false;
     this.router.navigate(['userdashboard']);
   }
 
@@ -38,15 +38,11 @@ export class FavouritesComponent {
   ) {}
 
   showList() {
-    this.showflavlist = !this.showflavlist;
+    this.showFlavList = !this.showFlavList;
   }
 
   addToFav(flav: Favourite) {
     this.fav.push(flav);
-
     this.apiService.addToFavourites(this.data2.uid, this.fav);
-
-    console.log(this.fav);
-    console.log(this.result);
   }
 }

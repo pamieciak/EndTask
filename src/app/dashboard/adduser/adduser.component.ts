@@ -20,7 +20,7 @@ export class AdduserComponent {
   add = false;
   hide = true;
 
-  SignUpForm = new FormGroup({
+  signUpForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -64,12 +64,12 @@ export class AdduserComponent {
   }
 
   get name() {
-    return this.SignUpForm.get('name');
+    return this.signUpForm.get('name');
   }
   get email() {
-    return this.SignUpForm.get('email');
+    return this.signUpForm.get('email');
   }
   get password() {
-    return this.SignUpForm.get('password');
+    return this.signUpForm.get('password');
   }
 }

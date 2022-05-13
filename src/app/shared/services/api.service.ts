@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Userinterface } from '../userinterface';
+import { User } from '../interfaces/userinterface';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Name, Value } from '../interfaces/productinterface';
 import { Order } from '../interfaces/orderinterface';
@@ -28,7 +28,7 @@ export class ApiService {
   }
 
   getOrders() {
-    return this.db.list<Order>('/users/').valueChanges();
+    return this.db.list<User>('/users/').valueChanges();
   }
 
   getOrderData(uid: string) {
@@ -36,10 +36,10 @@ export class ApiService {
   }
 
   GetUser() {
-    return this.db.list<Userinterface>('/users/').valueChanges();
+    return this.db.list<User>('/users/').valueChanges();
   }
 
-  SetUserData(uid: string, user: Userinterface) {
+  SetUserData(uid: string, user: User) {
     this.db.object('users/' + uid).set(user);
   }
 

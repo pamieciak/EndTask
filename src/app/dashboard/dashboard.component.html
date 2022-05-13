@@ -12,13 +12,13 @@
   pokaż listę
 </button>
 
-<ng-container *ngIf="showPr">
+<ng-container *ngIf="showProduct">
   <div class="productList">
     <div class="amount">
       <h2>Jednostki</h2>
       <br />
-      <div *ngFor="let prod of productsAmount$ | async">
-        <p>{{ prod.value }}</p>
+      <div *ngFor="let product of productsAmount$ | async; let i = index">
+        <p>{{ product.value }}</p><button (click)="removeValue()">usuń</button>
       </div>
     </div>
     <div class="flavours">

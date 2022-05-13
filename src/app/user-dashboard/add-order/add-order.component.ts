@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 export class AddOrderComponent {
   result: Order[] = [];
   order: Order[] = [];
-  open = false;
+  openOrders = false;
   openMessage = false;
 
   date = format(add(new Date(), { days: 0 }), 'y-MM-dd');
@@ -36,8 +36,10 @@ export class AddOrderComponent {
   });
 
   @HostListener('document:click', ['$event']) public hideDrop(e: MouseEvent) {
-    if (!this.open || this.el.nativeElement.contains(e.target)) return;
-    this.open = false;
+
+    if (!this.openOrders || this.el.nativeElement.contains(e.target)) return;
+
+    this.openOrders = false;
     this.router.navigate(['userdashboard']);
   }
 
@@ -58,10 +60,13 @@ export class AddOrderComponent {
   ) {}
 
   openOrder() {
+
     if (this.result[0] === undefined || this.result[0].date !== this.date) {
-      this.open = !this.open;
-    } else {
-      this.open = false;
+      this.openOrders = !this.openOrders;
+
+    } else
+    {
+      this.openOrders = false;
       this.openMessage = !this.openMessage;
     }
   }
@@ -75,9 +80,9 @@ export class AddOrderComponent {
   sendOrder() {
     const data = localStorage.getItem('user');
     const data2 = JSON.parse(data!);
-    console.log(data2);
+
     this.db.object('/users/' + data2.uid + '/orders/').set(this.order);
 
-    this.open = false;
+    this.openOrders = false;
   }
 }

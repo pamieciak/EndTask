@@ -3,7 +3,7 @@
     <mat-toolbar-row>
       <span class="header__logo">iceBook</span>
       <span class="spacer"></span>
-      <button mat-icon-button class="header__menuBtn" (click)="togglenav()">
+      <button mat-icon-button class="header__menuBtn" (click)="toggleNav()">
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu"> </mat-menu>
@@ -11,8 +11,8 @@
   </mat-toolbar>
 </header>
 
-<div class="slideMenu" [ngClass]="toggleNav ? 'active' : ''">
-  <button mat-icon-button (click)="logout()">
+<div class="slideMenu" [ngClass]="toggle ? 'active' : ''">
+  <button mat-icon-button (click)="logOut()">
     <mat-icon>exit_to_app</mat-icon>
     <span class="logout">Log out</span>
   </button>

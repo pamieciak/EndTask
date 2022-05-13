@@ -8,14 +8,19 @@ import { ApiService } from '../shared/services/api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
-  showPr = false;
+  showProduct = false;
 
   productsAmount$ = this.apiService.GetAmount();
   productsFlavour$ = this.apiService.GetFlavours();
 
   constructor(private apiService: ApiService) {}
 
+  removeValue(){
+
+  }
+
+
   showPorducts() {
-    this.showPr = !this.showPr;
+    this.showProduct = !this.showProduct;
   }
 }

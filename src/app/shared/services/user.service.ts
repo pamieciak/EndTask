@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Userinterface } from '../userinterface';
+import { User } from '../interfaces/userinterface';
 import { ApiService } from './api.service';
 import { Api } from '../interfaces/apiinterface';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';

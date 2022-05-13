@@ -12,7 +12,7 @@
   <div *ngIf="add">
     <div class="signupbox">
       <p>Dodaj klienta</p>
-      <form [formGroup]="SignUpForm" class="signupbox__form">
+      <form [formGroup]="signUpForm" class="signupbox__form">
         <mat-form-field>
           <input
             matInput
@@ -59,7 +59,7 @@
         <button
           mat-raised-button
           color="primary"
-          [disabled]="SignUpForm.invalid"
+          [disabled]="signUpForm.invalid"
           (click)="onSignup(name?.value, email?.value, password?.value)"
           class="submitBtn"
         >
